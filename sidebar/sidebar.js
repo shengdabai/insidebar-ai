@@ -1,4 +1,5 @@
 import { PROVIDERS, getProviderById, getProviderByIdWithSettings, getEnabledProviders } from '../modules/providers.js';
+import { escapeHtml } from '../modules/html-utils.js';
 import { applyTheme } from '../modules/theme-manager.js';
 import { t, translatePage, initializeLanguage } from '../modules/i18n.js';
 import {
@@ -1496,12 +1497,6 @@ async function sendWorkspaceToProvider() {
     console.error('Error sending workspace text to provider:', error);
     showToast('Failed to send text');
   }
-}
-
-function escapeHtml(text) {
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
 }
 
 // Sanitize HTML to prevent XSS attacks

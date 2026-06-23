@@ -2,6 +2,10 @@
 
 All your AIs—ChatGPT, Claude, Gemini, Grok, DeepSeek—in one browser sidebar. No API keys, privacy-first, open source.
 
+![Version](https://img.shields.io/badge/version-1.7.2-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Languages](https://img.shields.io/badge/languages-10-brightgreen.svg)
+
 ## Business Context
 
 - **Category:** security and governance tool
