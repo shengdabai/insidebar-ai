@@ -11,9 +11,9 @@
     "test:ui": "vitest --ui"
   },
   "devDependencies": {
-    "@vitest/ui": "^3.2.4",
-    "happy-dom": "^20.0.2",
-    "vitest": "^3.2.4",
-    "web-ext": "^9.0.0"
+    "@vitest/ui": "^5.0.1",
+    "happy-dom": "^20.14.5",
+    "vitest": "^5.0.1",
+    "web-ext": "^10.6.0"
   }
 }
