@@ -1,4 +1,7 @@
 {
+  "html_lang": {
+    "message": "zh-TW"
+  },
   "extensionName": {
     "message": "insidebar.ai"
   },
