@@ -268,6 +268,7 @@ function createProviderIframe(provider) {
   const iframe = document.createElement('iframe');
 
   iframe.src = provider.url;
+  iframe.title = provider.name;  // accessible name for the frame (axe frame-title)
   // Sandbox must allow same-origin + scripts so provider UIs can function; popups are
   // permitted to support OAuth flows within embedded sites. See README "Permissions"
   // for the full security rationale.

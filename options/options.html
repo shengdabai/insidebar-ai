@@ -25,11 +25,11 @@
 
         <div class="setting-item">
           <div class="setting-info">
-            <div class="setting-label" data-i18n="labelTheme">Theme</div>
+            <div class="setting-label" id="setting-labelTheme" data-i18n="labelTheme">Theme</div>
             <div class="setting-description" data-i18n="descTheme">Choose your preferred color scheme</div>
           </div>
           <div class="setting-control">
-            <select id="theme-select">
+            <select id="theme-select" aria-labelledby="setting-labelTheme">
               <option value="auto" data-i18n="themeAuto">Auto (System)</option>
               <option value="light" data-i18n="themeLight">Light</option>
               <option value="dark" data-i18n="themeDark">Dark</option>
@@ -39,11 +39,11 @@
 
         <div class="setting-item">
           <div class="setting-info">
-            <div class="setting-label" data-i18n="labelLanguage">Language</div>
+            <div class="setting-label" id="setting-labelLanguage" data-i18n="labelLanguage">Language</div>
             <div class="setting-description" data-i18n="descLanguage">Choose your preferred interface language</div>
           </div>
           <div class="setting-control">
-            <select id="language-select">
+            <select id="language-select" aria-labelledby="setting-labelLanguage">
               <option value="en" data-i18n="langEnglish">English</option>
               <option value="zh_CN" data-i18n="langSimplifiedChinese">简体中文 (Simplified Chinese)</option>
               <option value="zh_TW" data-i18n="langTraditionalChinese">繁體中文 (Traditional Chinese)</option>
@@ -65,11 +65,11 @@
 
         <div class="setting-item">
           <div class="setting-info">
-            <div class="setting-label" data-i18n="labelDefaultProvider">Default Provider</div>
+            <div class="setting-label" id="setting-labelDefaultProvider" data-i18n="labelDefaultProvider">Default Provider</div>
             <div class="setting-description" data-i18n="descDefaultProvider">AI provider to load when opening the sidebar</div>
           </div>
           <div class="setting-control">
-            <select id="default-provider-select">
+            <select id="default-provider-select" aria-labelledby="setting-labelDefaultProvider">
               <!-- Options dynamically populated based on enabled providers -->
             </select>
           </div>
@@ -77,12 +77,12 @@
 
         <div class="setting-item">
           <div class="setting-info">
-            <div class="setting-label" data-i18n="labelRememberLastProvider">Remember Last Provider</div>
+            <div class="setting-label" id="setting-labelRememberLastProvider" data-i18n="labelRememberLastProvider">Remember Last Provider</div>
             <div class="setting-description" data-i18n="descRememberLastProvider">When enabled, sidebar opens with the last provider you used. When disabled, always opens with default provider.</div>
           </div>
           <div class="setting-control">
             <label class="switch">
-              <input type="checkbox" id="remember-last-provider-toggle" checked />
+              <input type="checkbox" id="remember-last-provider-toggle" aria-labelledby="setting-labelRememberLastProvider" checked />
               <span class="slider"></span>
             </label>
           </div>
@@ -106,14 +106,14 @@
 
         <div class="setting-item">
           <div class="setting-info">
-            <div class="setting-label" data-i18n="labelEnableKeyboardShortcut">Enable Keyboard Shortcut</div>
+            <div class="setting-label" id="setting-labelEnableKeyboardShortcut" data-i18n="labelEnableKeyboardShortcut">Enable Keyboard Shortcut</div>
             <div class="setting-description" data-i18n="descEnableKeyboardShortcut">
               Toggle the global shortcut that opens insidebar.ai from anywhere in the browser.
             </div>
           </div>
           <div class="setting-control">
             <label class="switch">
-              <input type="checkbox" id="keyboard-shortcut-toggle" checked />
+              <input type="checkbox" id="keyboard-shortcut-toggle" aria-labelledby="setting-labelEnableKeyboardShortcut" checked />
               <span class="slider"></span>
             </label>
           </div>
@@ -155,14 +155,14 @@
 
         <div class="setting-item">
           <div class="setting-info">
-            <div class="setting-label" data-i18n="labelEnableEnterCustom">Enable Enter Key Customization</div>
+            <div class="setting-label" id="setting-labelEnableEnterCustom" data-i18n="labelEnableEnterCustom">Enable Enter Key Customization</div>
             <div class="setting-description" data-i18n="descEnableEnterCustom">
               When enabled, modifies Enter key behavior across all supported AI providers
             </div>
           </div>
           <div class="setting-control">
             <label class="switch">
-              <input type="checkbox" id="enter-behavior-toggle" checked />
+              <input type="checkbox" id="enter-behavior-toggle" aria-labelledby="setting-labelEnableEnterCustom" checked />
               <span class="slider"></span>
             </label>
           </div>
@@ -171,11 +171,11 @@
         <div id="enter-behavior-settings">
           <div class="setting-item">
             <div class="setting-info">
-              <div class="setting-label" data-i18n="labelPreset">Preset</div>
+              <div class="setting-label" id="setting-labelPreset" data-i18n="labelPreset">Preset</div>
               <div class="setting-description" data-i18n="descPreset">Choose a common key combination pattern</div>
             </div>
             <div class="setting-control">
-              <select id="enter-preset-select">
+              <select id="enter-preset-select" aria-labelledby="setting-labelPreset">
                 <option value="default" data-i18n="presetDefault">Default (Enter=Send, Shift+Enter=Newline)</option>
                 <option value="swapped" selected data-i18n="presetSwapped">Swapped (Enter=Newline, Shift+Enter=Send)</option>
                 <option value="slack" data-i18n="presetSlack">Slack-style (Enter=Send, Ctrl+Enter=Newline)</option>
@@ -234,14 +234,14 @@
 
         <div class="setting-item">
           <div class="setting-info">
-            <div class="setting-label" data-i18n="labelAutoOpenSidebar">Auto-open Sidebar After Save</div>
+            <div class="setting-label" id="setting-labelAutoOpenSidebar" data-i18n="labelAutoOpenSidebar">Auto-open Sidebar After Save</div>
             <div class="setting-description" data-i18n="descAutoOpenSidebar">
               Automatically open the sidebar and switch to chat history when you save a conversation
             </div>
           </div>
           <div class="setting-control">
             <label class="switch">
-              <input type="checkbox" id="auto-open-sidebar-toggle" />
+              <input type="checkbox" id="auto-open-sidebar-toggle" aria-labelledby="setting-labelAutoOpenSidebar" />
               <span class="slider"></span>
             </label>
           </div>
@@ -258,14 +258,14 @@
 
         <div class="setting-item">
           <div class="setting-info">
-            <div class="setting-label" data-i18n="labelAutoPaste">Auto-paste Clipboard to Prompt Library</div>
+            <div class="setting-label" id="setting-labelAutoPaste" data-i18n="labelAutoPaste">Auto-paste Clipboard to Prompt Library</div>
             <div class="setting-description" data-i18n="descAutoPaste">
               Automatically paste clipboard content to workspace when opening Prompt Library with Command+Shift+P
             </div>
           </div>
           <div class="setting-control">
             <label class="switch">
-              <input type="checkbox" id="auto-paste-toggle" />
+              <input type="checkbox" id="auto-paste-toggle" aria-labelledby="setting-labelAutoPaste" />
               <span class="slider"></span>
             </label>
           </div>
@@ -296,13 +296,13 @@
 
         <div class="setting-item">
           <div class="setting-info">
-            <div class="setting-label" data-i18n="labelSourceUrlPlacement">Source URL Placement</div>
+            <div class="setting-label" id="setting-labelSourceUrlPlacement" data-i18n="labelSourceUrlPlacement">Source URL Placement</div>
             <div class="setting-description" data-i18n="descSourceUrlPlacement">
               Choose where to place the source URL when sending selected text or page content to AI providers
             </div>
           </div>
           <div class="setting-control">
-            <select id="source-url-placement-select">
+            <select id="source-url-placement-select" aria-labelledby="setting-labelSourceUrlPlacement">
               <option value="end" data-i18n="urlPlacementEnd">At end (after content)</option>
               <option value="beginning" data-i18n="urlPlacementBeginning">At beginning (before content)</option>
               <option value="none" data-i18n="urlPlacementNone">Don't include URL</option>
