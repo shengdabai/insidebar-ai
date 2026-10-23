@@ -552,7 +552,7 @@ async function importData(file) {
     }
 
     // Confirm import
-    const confirmMsg = t('msgImportConfirm', [
+    const confirmMsg = t('confirmImportData', [
       new Date(data.exportDate).toLocaleString(),
       (data.prompts?.length || 0).toString(),
       (data.conversations?.length || 0).toString()
@@ -610,7 +610,7 @@ async function importData(file) {
 
 // Danger Zone: Clear Prompts
 async function clearPrompts() {
-  if (!confirm(t('msgConfirmClearPrompts'))) {
+  if (!confirm(t('confirmClearPrompts'))) {
     return;
   }
 
@@ -625,7 +625,7 @@ async function clearPrompts() {
 
 // Danger Zone: Clear Chat History
 async function clearConversations() {
-  if (!confirm(t('msgConfirmClearHistory'))) {
+  if (!confirm(t('confirmClearHistory'))) {
     return;
   }
 
@@ -640,7 +640,7 @@ async function clearConversations() {
 
 // Danger Zone: Reset Settings
 async function resetSettingsOnly() {
-  if (!confirm(t('msgConfirmResetSettings'))) {
+  if (!confirm(t('confirmResetSettings'))) {
     return;
   }
 
@@ -772,8 +772,8 @@ async function importCustomLibraryHandler(file) {
     });
 
     if (validationErrors.length > 0) {
-      const errorMsg = t('msgValidationErrors', validationErrors.length.toString()) + `:\n\n${validationErrors.slice(0, 5).join('\n')}${validationErrors.length > 5 ? '\n...' : ''}\n\n${getPromptStructureExample()}`;
-      showStatus('error', t('msgValidationErrors', validationErrors.length.toString()));
+      const errorMsg = t('errValidationErrors', validationErrors.length.toString()) + `:\n\n${validationErrors.slice(0, 5).join('\n')}${validationErrors.length > 5 ? '\n...' : ''}\n\n${getPromptStructureExample()}`;
+      showStatus('error', t('errValidationErrors', validationErrors.length.toString()));
       alert(errorMsg);
       return;
     }
@@ -938,7 +938,7 @@ async function saveCustomEnterSettings() {
     presetSelect.value = 'custom';
   }
 
-  showStatus('success', t('msgCustomMappingSaved'));
+  showStatus('success', t('msgCustomKeyMappingSaved'));
 }
 
 // T073: Version Check Functions
