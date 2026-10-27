@@ -1,5 +1,7 @@
-// Transform raw JSON libraries to unified schema for import
-// Run with: node transform-libraries.js
+// Transform raw JSON libraries to unified schema for import (development tool, not part of the extension).
+// Run from the repository root:
+//   node tools/transform-libraries.js <ai-meta-prompts-library.json> <research-meta-prompts-library.json>
+// Writes data/prompt-libraries/default-prompts.json.
 
 import fs from 'fs';
 import path from 'path';
@@ -61,9 +63,12 @@ async function main() {
   try {
     console.log('Reading source files...');
 
-    // Read source JSON files from Downloads
-    const aiPath = '/Users/joker/Downloads/ai-meta-prompts-library.json';
-    const researchPath = '/Users/joker/Downloads/research-meta-prompts-library.json';
+    // Source JSON files are passed on the command line (no machine-specific paths in the repo)
+    const [aiPath, researchPath] = process.argv.slice(2);
+    if (!aiPath || !researchPath) {
+      console.error('Usage: node tools/transform-libraries.js <ai-meta-prompts-library.json> <research-meta-prompts-library.json>');
+      process.exit(2);
+    }
 
     const aiData = JSON.parse(fs.readFileSync(aiPath, 'utf8'));
     const researchData = JSON.parse(fs.readFileSync(researchPath, 'utf8'));
@@ -84,7 +89,7 @@ async function main() {
     console.log(`Combined (deduplicated): ${combined.length} prompts`);
 
     // Write single output file
-    const outputDir = __dirname;
+    const outputDir = path.join(__dirname, '..', 'data', 'prompt-libraries');
 
     fs.writeFileSync(
       path.join(outputDir, 'default-prompts.json'),
