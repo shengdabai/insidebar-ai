@@ -552,7 +552,7 @@ async function importData(file) {
     }
 
     // Confirm import
-    const confirmMsg = t('msgImportConfirm', [
+    const confirmMsg = t('confirmImportData', [
       new Date(data.exportDate).toLocaleString(),
       (data.prompts?.length || 0).toString(),
       (data.conversations?.length || 0).toString()
@@ -591,15 +591,15 @@ async function importData(file) {
     const messages = [];
     if (promptImportSummary) {
       const { imported = 0, skipped = 0 } = promptImportSummary;
-      messages.push(t('msgPromptsImported', [imported.toString(), skipped.toString()]));
+      messages.push(t('msgPromptsImportedWithSkipped', [imported.toString(), skipped.toString()]));
     }
     if (conversationImportSummary) {
-      const { imported = 0, skipped = 0 } = conversationImportSummary;
-      messages.push(t('msgConversationsImported', [imported.toString(), skipped.toString()]));
+      // No translated message with conversation counts exists yet; this one takes no substitutions.
+      messages.push(t('msgConversationsImported'));
     }
 
     if (messages.length > 0) {
-      showStatus('success', t('msgDataImported') + ' — ' + messages.join('; ') + '.');
+      showStatus('success', t('msgDataImportedDetails', [messages.join('; ')]));
     } else {
       showStatus('success', t('msgDataImported'));
     }
@@ -610,7 +610,7 @@ async function importData(file) {
 
 // Danger Zone: Clear Prompts
 async function clearPrompts() {
-  if (!confirm(t('msgConfirmClearPrompts'))) {
+  if (!confirm(t('confirmClearPrompts'))) {
     return;
   }
 
@@ -625,7 +625,7 @@ async function clearPrompts() {
 
 // Danger Zone: Clear Chat History
 async function clearConversations() {
-  if (!confirm(t('msgConfirmClearHistory'))) {
+  if (!confirm(t('confirmClearHistory'))) {
     return;
   }
 
@@ -640,7 +640,7 @@ async function clearConversations() {
 
 // Danger Zone: Reset Settings
 async function resetSettingsOnly() {
-  if (!confirm(t('msgConfirmResetSettings'))) {
+  if (!confirm(t('confirmResetSettings'))) {
     return;
   }
 
@@ -772,8 +772,8 @@ async function importCustomLibraryHandler(file) {
     });
 
     if (validationErrors.length > 0) {
-      const errorMsg = t('msgValidationErrors', validationErrors.length.toString()) + `:\n\n${validationErrors.slice(0, 5).join('\n')}${validationErrors.length > 5 ? '\n...' : ''}\n\n${getPromptStructureExample()}`;
-      showStatus('error', t('msgValidationErrors', validationErrors.length.toString()));
+      const errorMsg = t('errValidationErrors', validationErrors.length.toString()) + `:\n\n${validationErrors.slice(0, 5).join('\n')}${validationErrors.length > 5 ? '\n...' : ''}\n\n${getPromptStructureExample()}`;
+      showStatus('error', t('errValidationErrors', validationErrors.length.toString()));
       alert(errorMsg);
       return;
     }
@@ -786,7 +786,7 @@ async function importCustomLibraryHandler(file) {
 
     // Show results
     if (result.imported > 0) {
-      showStatus('success', t('msgCustomPromptsImported', [result.imported.toString(), result.skipped.toString()]));
+      showStatus('success', t('msgPromptsImportedWithSkipped', [result.imported.toString(), result.skipped.toString()]));
     } else {
       showStatus('success', t('msgAllPromptsExist'));
     }
@@ -828,9 +828,9 @@ async function importDefaultLibraryHandler() {
     // Update UI
     if (result.imported > 0) {
       button.textContent = t('msgImported');
-      button.style.background = '#4caf50';
+      button.style.background = '#2e7d32'; // white text 5.1:1 (WCAG AA)
       button.style.color = 'white';
-      showStatus('success', t('msgDefaultPromptsImported', [result.imported.toString(), result.skipped.toString()]));
+      showStatus('success', t('msgPromptsImportedWithSkipped', [result.imported.toString(), result.skipped.toString()]));
     } else {
       button.textContent = t('msgAlreadyImported');
       button.disabled = true;
@@ -938,7 +938,7 @@ async function saveCustomEnterSettings() {
     presetSelect.value = 'custom';
   }
 
-  showStatus('success', t('msgCustomMappingSaved'));
+  showStatus('success', t('msgCustomKeyMappingSaved'));
 }
 
 // T073: Version Check Functions

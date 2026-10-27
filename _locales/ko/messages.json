@@ -17,12 +17,6 @@
   "actionDefaultTitle": {
     "message": "insidebar.ai 열기"
   },
-  "settingsTitle": {
-    "message": "설정: insidebar.ai"
-  },
-  "settingsSubtitle": {
-    "message": "멀티 AI 사이드바 경험을 사용자 지정하세요"
-  },
   "sectionAppearance": {
     "message": "외관"
   },
@@ -101,18 +95,9 @@
   "descEnabledProviders": {
     "message": "사이드바에 표시할 AI 제공자를 선택하세요"
   },
-  "sectionKeyboardShortcuts": {
-    "message": "키보드 단축키"
-  },
 
   "sectionKeyboard": {
     "message": "키보드"
-  },
-  "labelEnableShortcut": {
-    "message": "키보드 단축키 활성화"
-  },
-  "descEnableShortcut": {
-    "message": "브라우저 어디에서나 insidebar.ai 를 여는 전역 단축키를 전환합니다."
   },
   "labelDefaultShortcuts": {
     "message": "기본 단축키"
@@ -122,12 +107,6 @@
   },
   "btnOpenShortcuts": {
     "message": "단축키 열기"
-  },
-  "labelEdgeConfirm": {
-    "message": "Microsoft Edge 에서 확인"
-  },
-  "descEdgeConfirm": {
-    "message": "Edge 에서는 단축키를 한 번 확인해야 합니다. 구성을 클릭하면 Edge 단축키 페이지로 바로 이동합니다."
   },
   "btnConfigureEdge": {
     "message": "Edge 에서 구성"
@@ -165,20 +144,11 @@
   "urlPlacementNone": {
     "message": "URL 포함 안 함"
   },
-  "sectionEnterBehavior": {
-    "message": "Enter 키 동작"
-  },
   "descEnterBehavior1": {
     "message": "AI 제공자 입력 필드에서 Enter 키와 수정 키가 작동하는 방식을 사용자 지정합니다."
   },
   "descEnterBehavior2": {
     "message": "<strong>적용 대상:</strong> ChatGPT, Claude, Gemini, Google (AI 모드), Grok, DeepSeek 및 Perplexity."
-  },
-  "labelEnableEnterCustomization": {
-    "message": "Enter 키 사용자 지정 활성화"
-  },
-  "descEnableEnterCustomization": {
-    "message": "활성화하면 지원되는 모든 AI 제공자에서 Enter 키 동작을 수정합니다"
   },
   "labelPreset": {
     "message": "사전 설정"
@@ -213,20 +183,11 @@
   "descPromptLibrary": {
     "message": "AI 워크플로, 연구, 코딩 및 분석을 위한 엄선된 메타 프롬프트 가져오기"
   },
-  "labelDefaultLibrary": {
-    "message": "기본 프롬프트 라이브러리"
-  },
-  "descDefaultLibrary": {
-    "message": "프롬프트 개선, 계획, 코딩, 테스트, 연구, 작성 등을 위한 메타 프롬프트. 동적 템플릿을 위한 변수 지원이 포함됩니다."
-  },
   "btnImportDefault": {
     "message": "기본 프롬프트 가져오기"
   },
   "btnImportCustom": {
     "message": "사용자 지정 프롬프트 가져오기"
-  },
-  "noteCustomImport": {
-    "message": "사용자 지정 프롬프트를 가져오기 전에 다음을 읽어보세요: <code style = \"background: #f5f5f5; padding: 2px 6px; border - radius: 3px;\">data/prompt - libraries/Generate_a_Basic_Prompt_Library.md</code>"
   },
   "sectionDataManagement": {
     "message": "데이터 관리"
@@ -237,23 +198,8 @@
   "statPrompts": {
     "message": "프롬프트"
   },
-  "statStorage": {
-    "message": "사용된 저장 공간"
-  },
-  "labelExport": {
-    "message": "데이터 내보내기"
-  },
-  "descExport": {
-    "message": "모든 프롬프트 및 설정을 JSON 으로 다운로드"
-  },
   "btnExport": {
     "message": "내보내기"
-  },
-  "labelImport": {
-    "message": "데이터 가져오기"
-  },
-  "descImport": {
-    "message": "JSON 파일에서 프롬프트 및 설정 복원"
   },
   "btnImport": {
     "message": "가져오기"
@@ -294,9 +240,6 @@
   "labelVersion": {
     "message": "버전"
   },
-  "labelBuild": {
-    "message": "빌드"
-  },
   "btnCheckUpdates": {
     "message": "업데이트 확인"
   },
@@ -311,9 +254,6 @@
   },
   "msgThemeUpdated": {
     "message": "테마가 업데이트되었습니다"
-  },
-  "msgProviderUpdated": {
-    "message": "기본 제공자가 업데이트되었습니다"
   },
   "msgProviderSettingsUpdated": {
     "message": "제공자 설정이 업데이트되었습니다"
@@ -341,12 +281,6 @@
   },
   "msgRememberLastProviderDisabled": {
     "message": "사이드바가 항상 기본 제공자로 열립니다"
-  },
-  "msgEnterCustomizationEnabled": {
-    "message": "Enter 키 사용자 지정이 활성화되었습니다"
-  },
-  "msgEnterCustomizationDisabled": {
-    "message": "Enter 키 사용자 지정이 비활성화되었습니다"
   },
   "msgSourceUrlPlacementUpdated": {
     "message": "소스 URL 배치가 업데이트되었습니다"
@@ -376,14 +310,6 @@
       }
     }
   },
-  "msgPromptsImported": {
-    "message": "$COUNT$개의 프롬프트를 성공적으로 가져왔습니다",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
   "msgPromptsImportedWithSkipped": {
     "message": "$IMPORTED$개의 프롬프트를 성공적으로 가져왔습니다 ($SKIPPED$개는 이미 존재함)",
     "placeholders": {
@@ -395,19 +321,8 @@
       }
     }
   },
-  "msgPromptsAlreadyExist": {
-    "message": "모든 프롬프트가 이미 라이브러리에 존재합니다"
-  },
   "msgAlreadyImported": {
     "message": "이미 가져옴"
-  },
-  "msgCustomPromptsImported": {
-    "message": "$IMPORTED$개의 사용자 지정 프롬프트를 성공적으로 가져왔습니다",
-    "placeholders": {
-      "imported": {
-        "content": "$1"
-      }
-    }
   },
   "msgHistoryCleared": {
     "message": "모든 채팅 기록이 삭제되었습니다"
@@ -423,12 +338,6 @@
   },
   "msgUpToDate": {
     "message": "최신 버전입니다!"
-  },
-  "msgCheckingUpdates": {
-    "message": "확인 중..."
-  },
-  "msgUpdateCheckFailed": {
-    "message": "업데이트 확인 실패"
   },
   "msgVersionUnknown": {
     "message": "버전 알 수 없음"
@@ -463,45 +372,6 @@
         "content": "$4"
       }
     }
-  },
-  "msgUpdateStatusCurrent": {
-    "message": "최신 버전입니다!"
-  },
-  "msgUpdateStatusError": {
-    "message": "업데이트 확인 실패"
-  },
-  "errAtLeastOneProvider": {
-    "message": "최소 하나의 제공자를 활성화해야 합니다"
-  },
-  "errExportFailed": {
-    "message": "데이터 내보내기 실패"
-  },
-  "errImportFailed": {
-    "message": "데이터 가져오기 실패. 파일 형식을 확인하세요."
-  },
-  "errClearHistoryFailed": {
-    "message": "채팅 기록 지우기 실패"
-  },
-  "errClearPromptsFailed": {
-    "message": "프롬프트 지우기 실패"
-  },
-  "errResetSettingsFailed": {
-    "message": "설정 재설정 실패"
-  },
-  "errImportDefaultLibrary": {
-    "message": "기본 라이브러리 가져오기 실패"
-  },
-  "errImportCustomLibrary": {
-    "message": "사용자 지정 프롬프트 가져오기 실패"
-  },
-  "errInvalidFormat": {
-    "message": "잘못된 형식: 파일에 프롬프트의 JSON 배열이 포함되어야 합니다"
-  },
-  "errInvalidPromptStructure": {
-    "message": "잘못된 프롬프트 구조 - 자세한 내용은 알림을 참조하세요"
-  },
-  "errInvalidJSON": {
-    "message": "잘못된 JSON 파일 형식"
   },
   "errValidationErrors": {
     "message": "$COUNT$개의 프롬프트에 유효성 검사 오류가 있습니다",
@@ -549,9 +419,6 @@
   "sidebarEditingPrompt": {
     "message": "프롬프트 편집"
   },
-  "placeholderSearch": {
-    "message": "검색..."
-  },
   "placeholderSearchConversations": {
     "message": "대화 검색..."
   },
@@ -569,12 +436,6 @@
   },
   "btnDelete": {
     "message": "삭제"
-  },
-  "btnEdit": {
-    "message": "편집"
-  },
-  "btnCopy": {
-    "message": "복사"
   },
   "tooltipSaveNew": {
     "message": "새 프롬프트로 저장"
@@ -641,9 +502,6 @@
   },
   "labelTopFavorites": {
     "message": "최고 즐겨찾기"
-  },
-  "loadingText": {
-    "message": "로딩 중..."
   },
   "optionsPageTitle": {
     "message": "insidebar.ai - 설정"
@@ -784,9 +642,6 @@
   "msgUnknownCount": {
     "message": "알 수 없는 수"
   },
-  "msgDefaultPromptsImported": {
-    "message": "기본 프롬프트를 가져왔습니다"
-  },
   "msgConversationsImported": {
     "message": "대화를 가져왔습니다"
   },
@@ -825,28 +680,5 @@
   },
   "errGitHubFetchFailed": {
     "message": "GitHub에서 최신 커밋 가져오기 실패"
-  },
-
-  "errExtensionAPI": {
-    "message": "확장 프로그램 API를 사용할 수 없습니다. 페이지를 다시 로드해 보세요."
-  },
-  "errExtensionReloaded": {
-    "message": "확장 프로그램이 다시 로드되었습니다. 이 페이지를 다시 로드하고 저장을 다시 시도하세요."
-  },
-  "errSaveFailed": {
-    "message": "저장 실패: $ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
-  },
-  "errExtractFailed": {
-    "message": "대화 추출 실패: $ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
   }
 }

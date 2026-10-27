@@ -18,13 +18,6 @@
     "message": "Apri insidebar.ai"
   },
 
-  "settingsTitle": {
-    "message": "Impostazioni: insidebar.ai"
-  },
-  "settingsSubtitle": {
-    "message": "Personalizza la tua esperienza barra laterale multi-IA"
-  },
-
   "sectionAppearance": {
     "message": "Aspetto"
   },
@@ -105,18 +98,8 @@
     "message": "Seleziona quali provider IA appaiono nella tua barra laterale"
   },
 
-  "sectionKeyboardShortcuts": {
-    "message": "Scorciatoie da tastiera"
-  },
-
   "sectionKeyboard": {
     "message": "Tastiera"
-  },
-  "labelEnableShortcut": {
-    "message": "Abilita scorciatoie da tastiera"
-  },
-  "descEnableShortcut": {
-    "message": "Attiva la scorciatoia globale che apre insidebar.ai da qualsiasi punto del browser."
   },
   "labelDefaultShortcuts": {
     "message": "Scorciatoie predefinite"
@@ -126,12 +109,6 @@
   },
   "btnOpenShortcuts": {
     "message": "Apri scorciatoie"
-  },
-  "labelEdgeConfirm": {
-    "message": "Conferma in Microsoft Edge"
-  },
-  "descEdgeConfirm": {
-    "message": "Edge richiede di confermare la scorciatoia una volta. Fai clic su configura per andare direttamente alla pagina delle scorciatoie di Edge."
   },
   "btnConfigureEdge": {
     "message": "Configura in Edge"
@@ -172,20 +149,11 @@
     "message": "Non includere URL"
   },
 
-  "sectionEnterBehavior": {
-    "message": "Comportamento tasto Invio"
-  },
   "descEnterBehavior1": {
     "message": "Personalizza come funzionano il tasto Invio e i tasti modificatori durante la digitazione nei campi di input dei provider IA."
   },
   "descEnterBehavior2": {
     "message": "<strong>Si applica a:</strong> ChatGPT, Claude, Gemini, Google (Modalità IA), Grok, DeepSeek e Perplexity."
-  },
-  "labelEnableEnterCustomization": {
-    "message": "Abilita personalizzazione tasto Invio"
-  },
-  "descEnableEnterCustomization": {
-    "message": "Quando attivato, modifica il comportamento del tasto Invio su tutti i provider IA supportati"
   },
   "labelPreset": {
     "message": "Preimpostazione"
@@ -221,20 +189,11 @@
   "descPromptLibrary": {
     "message": "Importa meta-prompt curati per flussi di lavoro IA, ricerca, codifica e analisi"
   },
-  "labelDefaultLibrary": {
-    "message": "Libreria Prompt predefinita"
-  },
-  "descDefaultLibrary": {
-    "message": "Meta-prompt per raffinamento prompt, pianificazione, codifica, test, ricerca, scrittura e altro. Include supporto variabili per modelli dinamici."
-  },
   "btnImportDefault": {
     "message": "Importa prompt predefiniti"
   },
   "btnImportCustom": {
     "message": "Importa prompt personalizzati"
-  },
-  "noteCustomImport": {
-    "message": "Prima di importare prompt personalizzati, leggi: <code style=\"background: #f5f5f5; padding: 2px 6px; border-radius: 3px;\">data/prompt-libraries/Generate_a_Basic_Prompt_Library.md</code>"
   },
 
   "sectionDataManagement": {
@@ -246,23 +205,8 @@
   "statPrompts": {
     "message": "Prompt"
   },
-  "statStorage": {
-    "message": "Archiviazione utilizzata"
-  },
-  "labelExport": {
-    "message": "Esporta dati"
-  },
-  "descExport": {
-    "message": "Scarica tutti i prompt e le impostazioni come JSON"
-  },
   "btnExport": {
     "message": "Esporta"
-  },
-  "labelImport": {
-    "message": "Importa dati"
-  },
-  "descImport": {
-    "message": "Ripristina prompt e impostazioni da file JSON"
   },
   "btnImport": {
     "message": "Importa"
@@ -305,9 +249,6 @@
   "labelVersion": {
     "message": "Versione"
   },
-  "labelBuild": {
-    "message": "Build"
-  },
   "btnCheckUpdates": {
     "message": "Verifica aggiornamenti"
   },
@@ -323,9 +264,6 @@
 
   "msgThemeUpdated": {
     "message": "Tema aggiornato"
-  },
-  "msgProviderUpdated": {
-    "message": "Provider predefinito aggiornato"
   },
   "msgProviderSettingsUpdated": {
     "message": "Impostazioni provider aggiornate"
@@ -353,12 +291,6 @@
   },
   "msgRememberLastProviderDisabled": {
     "message": "La barra laterale aprirà sempre il provider predefinito"
-  },
-  "msgEnterCustomizationEnabled": {
-    "message": "Personalizzazione tasto Invio attivata"
-  },
-  "msgEnterCustomizationDisabled": {
-    "message": "Personalizzazione tasto Invio disattivata"
   },
   "msgSourceUrlPlacementUpdated": {
     "message": "Posizionamento URL di origine aggiornato"
@@ -388,14 +320,6 @@
       }
     }
   },
-  "msgPromptsImported": {
-    "message": "$COUNT$ prompt importati con successo",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
   "msgPromptsImportedWithSkipped": {
     "message": "$IMPORTED$ prompt importati con successo ($SKIPPED$ già esistenti)",
     "placeholders": {
@@ -407,19 +331,8 @@
       }
     }
   },
-  "msgPromptsAlreadyExist": {
-    "message": "Tutti i prompt esistono già nella tua libreria"
-  },
   "msgAlreadyImported": {
     "message": "Già importato"
-  },
-  "msgCustomPromptsImported": {
-    "message": "$IMPORTED$ prompt personalizzati importati con successo",
-    "placeholders": {
-      "imported": {
-        "content": "$1"
-      }
-    }
   },
   "msgHistoryCleared": {
     "message": "Tutta la cronologia chat è stata eliminata"
@@ -435,12 +348,6 @@
   },
   "msgUpToDate": {
     "message": "Sei aggiornato!"
-  },
-  "msgCheckingUpdates": {
-    "message": "Verifica in corso..."
-  },
-  "msgUpdateCheckFailed": {
-    "message": "Verifica aggiornamenti non riuscita"
   },
   "msgVersionUnknown": {
     "message": "Versione sconosciuta"
@@ -476,46 +383,7 @@
       }
     }
   },
-  "msgUpdateStatusCurrent": {
-    "message": "Hai l'ultima versione!"
-  },
-  "msgUpdateStatusError": {
-    "message": "Verifica aggiornamenti non riuscita"
-  },
 
-  "errAtLeastOneProvider": {
-    "message": "Almeno un provider deve essere abilitato"
-  },
-  "errExportFailed": {
-    "message": "Esportazione dati non riuscita"
-  },
-  "errImportFailed": {
-    "message": "Importazione dati non riuscita. Controlla il formato del file."
-  },
-  "errClearHistoryFailed": {
-    "message": "Cancellazione cronologia chat non riuscita"
-  },
-  "errClearPromptsFailed": {
-    "message": "Cancellazione prompt non riuscita"
-  },
-  "errResetSettingsFailed": {
-    "message": "Ripristino impostazioni non riuscito"
-  },
-  "errImportDefaultLibrary": {
-    "message": "Importazione libreria predefinita non riuscita"
-  },
-  "errImportCustomLibrary": {
-    "message": "Importazione prompt personalizzati non riuscita"
-  },
-  "errInvalidFormat": {
-    "message": "Formato non valido: il file deve contenere un array JSON di prompt"
-  },
-  "errInvalidPromptStructure": {
-    "message": "Struttura prompt non valida - vedi avviso per dettagli"
-  },
-  "errInvalidJSON": {
-    "message": "Formato file JSON non valido"
-  },
   "errValidationErrors": {
     "message": "$COUNT$ prompt hanno errori di validazione",
     "placeholders": {
@@ -565,9 +433,6 @@
   "sidebarEditingPrompt": {
     "message": "Modifica Prompt"
   },
-  "placeholderSearch": {
-    "message": "Cerca..."
-  },
   "placeholderSearchConversations": {
     "message": "Cerca conversazioni..."
   },
@@ -585,12 +450,6 @@
   },
   "btnDelete": {
     "message": "Elimina"
-  },
-  "btnEdit": {
-    "message": "Modifica"
-  },
-  "btnCopy": {
-    "message": "Copia"
   },
   "tooltipSaveNew": {
     "message": "Salva come nuovo prompt"
@@ -657,9 +516,6 @@
   },
   "labelTopFavorites": {
     "message": "Preferiti principali"
-  },
-  "loadingText": {
-    "message": "Caricamento..."
   },
 
   "optionsPageTitle": {
@@ -801,9 +657,6 @@
   "msgUnknownCount": {
     "message": "Conteggio sconosciuto"
   },
-  "msgDefaultPromptsImported": {
-    "message": "Prompt predefiniti importati"
-  },
   "msgConversationsImported": {
     "message": "Conversazioni importate"
   },
@@ -841,28 +694,5 @@
   },
   "btnOverwrite": {
     "message": "Sovrascrivi"
-  },
-
-  "errExtensionAPI": {
-    "message": "API dell'estensione non disponibile. Prova a ricaricare la pagina."
-  },
-  "errExtensionReloaded": {
-    "message": "L'estensione è stata ricaricata. Ricarica questa pagina e riprova a salvare."
-  },
-  "errSaveFailed": {
-    "message": "Salvataggio fallito: $ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
-  },
-  "errExtractFailed": {
-    "message": "Estrazione della conversazione fallita: $ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
   }
 }

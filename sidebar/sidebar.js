@@ -788,7 +788,7 @@ async function renderPromptList(prompts = null) {
   if (prompts.length === 0) {
     listContainer.innerHTML = `
       <div class="prompt-list-empty">
-        <p><span class="material-symbols-outlined" style="font-size: 48px; opacity: 0.5;">description</span></p>
+        <p aria-hidden="true"><span class="material-symbols-outlined" style="font-size: 48px; opacity: 0.5;">description</span></p>
         <p>No prompts yet</p>
         <p>Click "+ New" to create your first prompt</p>
       </div>

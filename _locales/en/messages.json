@@ -18,13 +18,6 @@
     "message": "Open insidebar.ai"
   },
 
-  "settingsTitle": {
-    "message": "Settings: insidebar.ai"
-  },
-  "settingsSubtitle": {
-    "message": "Customize your multi-AI sidebar experience"
-  },
-
   "sectionAppearance": {
     "message": "Appearance"
   },
@@ -105,18 +98,8 @@
     "message": "Select which AI providers appear in your sidebar"
   },
 
-  "sectionKeyboardShortcuts": {
-    "message": "Keyboard Shortcuts"
-  },
-
   "sectionKeyboard": {
     "message": "Keyboard"
-  },
-  "labelEnableShortcut": {
-    "message": "Enable Keyboard Shortcut"
-  },
-  "descEnableShortcut": {
-    "message": "Toggle the global shortcut that opens insidebar.ai from anywhere in the browser."
   },
   "labelDefaultShortcuts": {
     "message": "Default Shortcuts"
@@ -126,12 +109,6 @@
   },
   "btnOpenShortcuts": {
     "message": "Open Shortcuts"
-  },
-  "labelEdgeConfirm": {
-    "message": "Confirm in Microsoft Edge"
-  },
-  "descEdgeConfirm": {
-    "message": "Edge requires you to confirm the shortcut once. Click configure to jump straight to the Edge shortcuts page."
   },
   "btnConfigureEdge": {
     "message": "Configure in Edge"
@@ -172,20 +149,11 @@
     "message": "Don't include URL"
   },
 
-  "sectionEnterBehavior": {
-    "message": "Enter Key Behavior"
-  },
   "descEnterBehavior1": {
     "message": "Customize how Enter and modifier keys work when typing in AI provider input fields."
   },
   "descEnterBehavior2": {
     "message": "<strong>Applies to:</strong> ChatGPT, Claude, Gemini, Google (AI Mode), Grok, DeepSeek, and Perplexity."
-  },
-  "labelEnableEnterCustomization": {
-    "message": "Enable Enter Key Customization"
-  },
-  "descEnableEnterCustomization": {
-    "message": "When enabled, modifies Enter key behavior across all supported AI providers"
   },
   "labelPreset": {
     "message": "Preset"
@@ -221,20 +189,11 @@
   "descPromptLibrary": {
     "message": "Import curated meta-prompts for AI workflows, research, coding, and analysis"
   },
-  "labelDefaultLibrary": {
-    "message": "Default Prompt Library"
-  },
-  "descDefaultLibrary": {
-    "message": "Meta-prompts for prompt refinement, planning, coding, testing, research, writing, and more. Includes variables support for dynamic templates."
-  },
   "btnImportDefault": {
     "message": "Import Default Prompts"
   },
   "btnImportCustom": {
     "message": "Import Custom Prompts"
-  },
-  "noteCustomImport": {
-    "message": "Before importing custom prompts, please read: <code style=\"background: #f5f5f5; padding: 2px 6px; border-radius: 3px;\">data/prompt-libraries/Generate_a_Basic_Prompt_Library.md</code>"
   },
 
   "sectionDataManagement": {
@@ -246,23 +205,8 @@
   "statPrompts": {
     "message": "Prompts"
   },
-  "statStorage": {
-    "message": "Storage Used"
-  },
-  "labelExport": {
-    "message": "Export Data"
-  },
-  "descExport": {
-    "message": "Download all prompts and settings as JSON"
-  },
   "btnExport": {
     "message": "Export"
-  },
-  "labelImport": {
-    "message": "Import Data"
-  },
-  "descImport": {
-    "message": "Restore prompts and settings from JSON file"
   },
   "btnImport": {
     "message": "Import"
@@ -305,9 +249,6 @@
   "labelVersion": {
     "message": "Version"
   },
-  "labelBuild": {
-    "message": "Build"
-  },
   "btnCheckUpdates": {
     "message": "Check for Updates"
   },
@@ -323,9 +264,6 @@
 
   "msgThemeUpdated": {
     "message": "Theme updated"
-  },
-  "msgProviderUpdated": {
-    "message": "Default provider updated"
   },
   "msgProviderSettingsUpdated": {
     "message": "Provider settings updated"
@@ -357,12 +295,6 @@
   "msgRememberLastProviderDisabled": {
     "message": "Sidebar will always open default provider"
   },
-  "msgEnterCustomizationEnabled": {
-    "message": "Enter key customization enabled"
-  },
-  "msgEnterCustomizationDisabled": {
-    "message": "Enter key customization disabled"
-  },
   "msgPresetChanged": {
     "message": "Preset changed to: $PRESET$",
     "placeholders": {
@@ -388,14 +320,6 @@
       }
     }
   },
-  "msgPromptsImported": {
-    "message": "Successfully imported $COUNT$ prompts",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
   "msgPromptsImportedWithSkipped": {
     "message": "Successfully imported $IMPORTED$ prompts ($SKIPPED$ already existed)",
     "placeholders": {
@@ -407,19 +331,8 @@
       }
     }
   },
-  "msgPromptsAlreadyExist": {
-    "message": "All prompts already exist in your library"
-  },
   "msgAlreadyImported": {
     "message": "Already Imported"
-  },
-  "msgCustomPromptsImported": {
-    "message": "Successfully imported $IMPORTED$ custom prompts",
-    "placeholders": {
-      "imported": {
-        "content": "$1"
-      }
-    }
   },
   "msgHistoryCleared": {
     "message": "All chat history has been deleted"
@@ -435,12 +348,6 @@
   },
   "msgUpToDate": {
     "message": "You are up to date!"
-  },
-  "msgCheckingUpdates": {
-    "message": "Checking..."
-  },
-  "msgUpdateCheckFailed": {
-    "message": "Failed to check for updates"
   },
   "msgVersionUnknown": {
     "message": "Version unknown"
@@ -476,46 +383,7 @@
       }
     }
   },
-  "msgUpdateStatusCurrent": {
-    "message": "You have the latest version!"
-  },
-  "msgUpdateStatusError": {
-    "message": "Failed to check for updates"
-  },
 
-  "errAtLeastOneProvider": {
-    "message": "At least one provider must be enabled"
-  },
-  "errExportFailed": {
-    "message": "Failed to export data"
-  },
-  "errImportFailed": {
-    "message": "Failed to import data. Please check the file format."
-  },
-  "errClearHistoryFailed": {
-    "message": "Failed to clear chat history"
-  },
-  "errClearPromptsFailed": {
-    "message": "Failed to clear prompts"
-  },
-  "errResetSettingsFailed": {
-    "message": "Failed to reset settings"
-  },
-  "errImportDefaultLibrary": {
-    "message": "Failed to import default library"
-  },
-  "errImportCustomLibrary": {
-    "message": "Failed to import custom prompts"
-  },
-  "errInvalidFormat": {
-    "message": "Invalid format: File must contain a JSON array of prompts"
-  },
-  "errInvalidPromptStructure": {
-    "message": "Invalid prompt structure - see alert for details"
-  },
-  "errInvalidJSON": {
-    "message": "Invalid JSON file format"
-  },
   "errValidationErrors": {
     "message": "$COUNT$ prompts have validation errors",
     "placeholders": {
@@ -565,9 +433,6 @@
   "sidebarEditingPrompt": {
     "message": "Editing Prompt"
   },
-  "placeholderSearch": {
-    "message": "Search..."
-  },
   "placeholderSearchConversations": {
     "message": "Search conversations..."
   },
@@ -585,12 +450,6 @@
   },
   "btnDelete": {
     "message": "Delete"
-  },
-  "btnEdit": {
-    "message": "Edit"
-  },
-  "btnCopy": {
-    "message": "Copy"
   },
   "tooltipSaveNew": {
     "message": "Save as new prompt"
@@ -657,9 +516,6 @@
   },
   "labelTopFavorites": {
     "message": "Top Favorites"
-  },
-  "loadingText": {
-    "message": "Loading..."
   },
 
   "optionsPageTitle": {
@@ -801,9 +657,6 @@
   "msgUnknownCount": {
     "message": "Unknown count"
   },
-  "msgDefaultPromptsImported": {
-    "message": "Default prompts imported"
-  },
   "msgConversationsImported": {
     "message": "Conversations imported"
   },
@@ -841,28 +694,5 @@
   },
   "btnOverwrite": {
     "message": "Overwrite"
-  },
-
-  "errExtensionAPI": {
-    "message": "Extension API not available. Try reloading the page."
-  },
-  "errExtensionReloaded": {
-    "message": "Extension was reloaded. Please reload this page and try saving again."
-  },
-  "errSaveFailed": {
-    "message": "Failed to save: $ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
-  },
-  "errExtractFailed": {
-    "message": "Failed to extract conversation: $ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
   }
 }

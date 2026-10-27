@@ -155,7 +155,7 @@
       </div>
 
       <div id="prompt-library-header">
-        <h2 data-i18n="sidebarPromptGenie">Prompt Genie</h2>
+        <h2 id="prompt-library-title" data-i18n="sidebarPromptGenie">Prompt Genie</h2>
       </div>
 
       <div id="prompt-filters">
@@ -203,7 +203,8 @@
         </div>
       </div>
 
-      <div id="prompt-list">
+      <!-- Scrolls on its own: tabindex lets keyboard users reach and scroll it (Safari does not by default) -->
+      <div id="prompt-list" tabindex="0" role="region" aria-labelledby="prompt-library-title">
         <!-- Prompt items will be dynamically rendered here -->
       </div>
 

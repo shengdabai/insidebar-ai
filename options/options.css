@@ -413,8 +413,46 @@ select:focus {
 
 .commit-hash {
   font-size: 11px;
-  color: #999;
+  color: #6e6e6e;
   font-family: monospace;
+}
+
+/* Secondary text (WCAG AA: >= 4.5:1 on the white page and the #f9f9f9 cards; dark values below) */
+.note {
+  color: #666;
+}
+
+.note-subtle {
+  color: #6e6e6e;
+}
+
+/* Inline code chips keep their light background in both themes, so their text stays dark */
+.note-subtle code {
+  color: #555;
+}
+
+.text-danger {
+  color: #d32f2f;
+}
+
+@media (prefers-color-scheme: dark) {
+  .note,
+  .note-subtle {
+    color: #aaa;
+  }
+
+  .text-danger {
+    color: #ef9a9a;
+  }
+}
+
+[data-theme="dark"] .note,
+[data-theme="dark"] .note-subtle {
+  color: #aaa;
+}
+
+[data-theme="dark"] .text-danger {
+  color: #ef9a9a;
 }
 
 .version-actions {
@@ -657,7 +695,7 @@ select:focus {
 }
 
 .library-import-card .btn-secondary:disabled {
-  background: #4caf50;
+  background: #2e7d32;
   color: white;
   cursor: default;
 }
