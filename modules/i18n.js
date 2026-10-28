@@ -152,6 +152,22 @@ export function translatePage(root = document) {
       element.setAttribute('aria-label', t(key));
     }
   });
+
+  applyDocumentLang(root.ownerDocument || root);
+}
+
+/**
+ * Point <html lang> at the language whose strings are rendered into the page: the
+ * user's chosen language when custom translations are loaded, otherwise the locale
+ * Chrome resolved. The static attribute in the HTML files stays at the default_locale.
+ * @param {Document} doc - Document whose root element gets the lang attribute
+ */
+export function applyDocumentLang(doc = document) {
+  const lang = t('html_lang');
+  // t() returns the key itself when no translation exists; never write that into lang.
+  if (lang && lang !== 'html_lang' && doc.documentElement) {
+    doc.documentElement.setAttribute('lang', lang);
+  }
 }
 
 /**
