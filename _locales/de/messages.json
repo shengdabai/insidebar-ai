@@ -18,13 +18,6 @@
     "message": "insidebar.ai öffnen"
   },
 
-  "settingsTitle": {
-    "message": "Einstellungen: insidebar.ai"
-  },
-  "settingsSubtitle": {
-    "message": "Passen Sie Ihre Multi-KI-Seitenleiste an"
-  },
-
   "sectionAppearance": {
     "message": "Erscheinungsbild"
   },
@@ -105,18 +98,8 @@
     "message": "Wählen Sie aus, welche KI-Anbieter in Ihrer Seitenleiste erscheinen"
   },
 
-  "sectionKeyboardShortcuts": {
-    "message": "Tastaturkürzel"
-  },
-
   "sectionKeyboard": {
     "message": "Tastatur"
-  },
-  "labelEnableShortcut": {
-    "message": "Tastaturkürzel aktivieren"
-  },
-  "descEnableShortcut": {
-    "message": "Schalten Sie das globale Tastaturkürzel um, das insidebar.ai von überall im Browser öffnet."
   },
   "labelDefaultShortcuts": {
     "message": "Standard-Tastaturkürzel"
@@ -126,12 +109,6 @@
   },
   "btnOpenShortcuts": {
     "message": "Tastaturkürzel öffnen"
-  },
-  "labelEdgeConfirm": {
-    "message": "In Microsoft Edge bestätigen"
-  },
-  "descEdgeConfirm": {
-    "message": "Edge erfordert eine einmalige Bestätigung des Tastaturkürzels. Klicken Sie auf Konfigurieren, um direkt zur Edge-Tastaturkürzel-Seite zu gelangen."
   },
   "btnConfigureEdge": {
     "message": "In Edge konfigurieren"
@@ -172,20 +149,11 @@
     "message": "URL nicht einschließen"
   },
 
-  "sectionEnterBehavior": {
-    "message": "Enter-Tasten-Verhalten"
-  },
   "descEnterBehavior1": {
     "message": "Passen Sie an, wie die Enter-Taste und Modifikatortasten funktionieren, wenn Sie in KI-Anbieter-Eingabefeldern tippen."
   },
   "descEnterBehavior2": {
     "message": "<strong>Gilt für:</strong> ChatGPT, Claude, Gemini, Google (KI-Modus), Grok, DeepSeek und Perplexity."
-  },
-  "labelEnableEnterCustomization": {
-    "message": "Enter-Tasten-Anpassung aktivieren"
-  },
-  "descEnableEnterCustomization": {
-    "message": "Wenn aktiviert, ändert das Enter-Tasten-Verhalten bei allen unterstützten KI-Anbietern"
   },
   "labelPreset": {
     "message": "Voreinstellung"
@@ -221,20 +189,11 @@
   "descPromptLibrary": {
     "message": "Importieren Sie kuratierte Meta-Prompts für KI-Workflows, Recherche, Programmierung und Analyse"
   },
-  "labelDefaultLibrary": {
-    "message": "Standard-Prompt-Bibliothek"
-  },
-  "descDefaultLibrary": {
-    "message": "Meta-Prompts für Prompt-Verfeinerung, Planung, Programmierung, Tests, Recherche, Schreiben und mehr. Enthält Variablenunterstützung für dynamische Vorlagen."
-  },
   "btnImportDefault": {
     "message": "Standard-Prompts importieren"
   },
   "btnImportCustom": {
     "message": "Benutzerdefinierte Prompts importieren"
-  },
-  "noteCustomImport": {
-    "message": "Bevor Sie benutzerdefinierte Prompts importieren, lesen Sie bitte: <code style=\"background: #f5f5f5; padding: 2px 6px; border-radius: 3px;\">data/prompt-libraries/Generate_a_Basic_Prompt_Library.md</code>"
   },
 
   "sectionDataManagement": {
@@ -246,23 +205,8 @@
   "statPrompts": {
     "message": "Prompts"
   },
-  "statStorage": {
-    "message": "Verwendeter Speicher"
-  },
-  "labelExport": {
-    "message": "Daten exportieren"
-  },
-  "descExport": {
-    "message": "Laden Sie alle Prompts und Einstellungen als JSON herunter"
-  },
   "btnExport": {
     "message": "Exportieren"
-  },
-  "labelImport": {
-    "message": "Daten importieren"
-  },
-  "descImport": {
-    "message": "Prompts und Einstellungen aus JSON-Datei wiederherstellen"
   },
   "btnImport": {
     "message": "Importieren"
@@ -305,9 +249,6 @@
   "labelVersion": {
     "message": "Version"
   },
-  "labelBuild": {
-    "message": "Build"
-  },
   "btnCheckUpdates": {
     "message": "Nach Updates suchen"
   },
@@ -323,9 +264,6 @@
 
   "msgThemeUpdated": {
     "message": "Design aktualisiert"
-  },
-  "msgProviderUpdated": {
-    "message": "Standard-Anbieter aktualisiert"
   },
   "msgProviderSettingsUpdated": {
     "message": "Anbietereinstellungen aktualisiert"
@@ -353,12 +291,6 @@
   },
   "msgRememberLastProviderDisabled": {
     "message": "Seitenleiste öffnet immer den Standard-Anbieter"
-  },
-  "msgEnterCustomizationEnabled": {
-    "message": "Enter-Tasten-Anpassung aktiviert"
-  },
-  "msgEnterCustomizationDisabled": {
-    "message": "Enter-Tasten-Anpassung deaktiviert"
   },
   "msgSourceUrlPlacementUpdated": {
     "message": "Quell-URL-Platzierung aktualisiert"
@@ -388,14 +320,6 @@
       }
     }
   },
-  "msgPromptsImported": {
-    "message": "$COUNT$ Prompts erfolgreich importiert",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
   "msgPromptsImportedWithSkipped": {
     "message": "$IMPORTED$ Prompts erfolgreich importiert ($SKIPPED$ existierten bereits)",
     "placeholders": {
@@ -407,19 +331,8 @@
       }
     }
   },
-  "msgPromptsAlreadyExist": {
-    "message": "Alle Prompts existieren bereits in Ihrer Bibliothek"
-  },
   "msgAlreadyImported": {
     "message": "Bereits importiert"
-  },
-  "msgCustomPromptsImported": {
-    "message": "$IMPORTED$ benutzerdefinierte Prompts erfolgreich importiert",
-    "placeholders": {
-      "imported": {
-        "content": "$1"
-      }
-    }
   },
   "msgHistoryCleared": {
     "message": "Gesamter Chat-Verlauf wurde gelöscht"
@@ -435,12 +348,6 @@
   },
   "msgUpToDate": {
     "message": "Sie sind auf dem neuesten Stand!"
-  },
-  "msgCheckingUpdates": {
-    "message": "Überprüfe..."
-  },
-  "msgUpdateCheckFailed": {
-    "message": "Fehler beim Suchen nach Updates"
   },
   "msgVersionUnknown": {
     "message": "Version unbekannt"
@@ -476,46 +383,7 @@
       }
     }
   },
-  "msgUpdateStatusCurrent": {
-    "message": "Sie haben die neueste Version!"
-  },
-  "msgUpdateStatusError": {
-    "message": "Fehler beim Suchen nach Updates"
-  },
 
-  "errAtLeastOneProvider": {
-    "message": "Mindestens ein Anbieter muss aktiviert sein"
-  },
-  "errExportFailed": {
-    "message": "Fehler beim Exportieren der Daten"
-  },
-  "errImportFailed": {
-    "message": "Fehler beim Importieren der Daten. Bitte überprüfen Sie das Dateiformat."
-  },
-  "errClearHistoryFailed": {
-    "message": "Fehler beim Löschen des Chat-Verlaufs"
-  },
-  "errClearPromptsFailed": {
-    "message": "Fehler beim Löschen der Prompts"
-  },
-  "errResetSettingsFailed": {
-    "message": "Fehler beim Zurücksetzen der Einstellungen"
-  },
-  "errImportDefaultLibrary": {
-    "message": "Fehler beim Importieren der Standard-Bibliothek"
-  },
-  "errImportCustomLibrary": {
-    "message": "Fehler beim Importieren benutzerdefinierter Prompts"
-  },
-  "errInvalidFormat": {
-    "message": "Ungültiges Format: Datei muss ein JSON-Array von Prompts enthalten"
-  },
-  "errInvalidPromptStructure": {
-    "message": "Ungültige Prompt-Struktur - siehe Warnung für Details"
-  },
-  "errInvalidJSON": {
-    "message": "Ungültiges JSON-Dateiformat"
-  },
   "errValidationErrors": {
     "message": "$COUNT$ Prompts haben Validierungsfehler",
     "placeholders": {
@@ -565,9 +433,6 @@
   "sidebarEditingPrompt": {
     "message": "Prompt bearbeiten"
   },
-  "placeholderSearch": {
-    "message": "Suchen..."
-  },
   "placeholderSearchConversations": {
     "message": "Unterhaltungen durchsuchen..."
   },
@@ -585,12 +450,6 @@
   },
   "btnDelete": {
     "message": "Löschen"
-  },
-  "btnEdit": {
-    "message": "Bearbeiten"
-  },
-  "btnCopy": {
-    "message": "Kopieren"
   },
   "tooltipSaveNew": {
     "message": "Als neuen Prompt speichern"
@@ -657,9 +516,6 @@
   },
   "labelTopFavorites": {
     "message": "Top-Favoriten"
-  },
-  "loadingText": {
-    "message": "Lädt..."
   },
 
   "optionsPageTitle": {
@@ -801,9 +657,6 @@
   "msgUnknownCount": {
     "message": "Unbekannte Anzahl"
   },
-  "msgDefaultPromptsImported": {
-    "message": "Standard-Prompts importiert"
-  },
   "msgConversationsImported": {
     "message": "Unterhaltungen importiert"
   },
@@ -841,28 +694,5 @@
   },
   "btnOverwrite": {
     "message": "Überschreiben"
-  },
-
-  "errExtensionAPI": {
-    "message": "Erweiterungs-API nicht verfügbar. Versuchen Sie, die Seite neu zu laden."
-  },
-  "errExtensionReloaded": {
-    "message": "Die Erweiterung wurde neu geladen. Bitte laden Sie diese Seite neu und versuchen Sie erneut zu speichern."
-  },
-  "errSaveFailed": {
-    "message": "Speichern fehlgeschlagen: $ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
-  },
-  "errExtractFailed": {
-    "message": "Extrahieren der Unterhaltung fehlgeschlagen: $ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
   }
 }

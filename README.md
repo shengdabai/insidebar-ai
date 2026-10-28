@@ -35,6 +35,7 @@ This repository belongs in the trust-and-safety layer of the workbench: it helps
 
 - `data`
 - `tests`
+- `tools` (development scripts; not packaged)
 - `CHANGELOG.md`
 - `COPILOT_TODO.md`
 - `LICENSE`
@@ -61,6 +62,7 @@ npm run test
 | `npm install` | Install project dependencies. |
 | `npm run lint` | web-ext lint --source-dir . |
 | `npm run test` | vitest |
+| `npm run build` | web-ext build: packages the extension into `web-ext-artifacts/`, leaving out `tools`, `tests`, `Screenshots` and npm files (`webExt.ignoreFiles` in package.json). Use this instead of zipping the folder by hand. |
 
 ## Operating Notes
 

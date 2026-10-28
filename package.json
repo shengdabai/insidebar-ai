@@ -5,15 +5,31 @@
   "type": "module",
   "scripts": {
     "lint": "web-ext lint --source-dir .",
+    "build": "web-ext build --source-dir . --overwrite-dest",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui"
   },
+  "webExt": {
+    "ignoreFiles": [
+      "tools",
+      "tools/**",
+      "tests",
+      "tests/**",
+      "coverage",
+      "coverage/**",
+      "Screenshots",
+      "Screenshots/**",
+      "package.json",
+      "package-lock.json",
+      "vitest.config.js"
+    ]
+  },
   "devDependencies": {
-    "@vitest/ui": "^3.2.4",
-    "happy-dom": "^20.0.2",
-    "vitest": "^3.2.4",
-    "web-ext": "^9.0.0"
+    "@vitest/ui": "^5.0.1",
+    "happy-dom": "^20.14.5",
+    "vitest": "^5.0.1",
+    "web-ext": "^10.6.0"
   }
 }

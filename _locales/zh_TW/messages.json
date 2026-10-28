@@ -17,12 +17,6 @@
   "actionDefaultTitle": {
     "message": "開啟 insidebar.ai"
   },
-  "settingsTitle": {
-    "message": "設定： insidebar.ai"
-  },
-  "settingsSubtitle": {
-    "message": "自訂您的多 AI 側邊欄體驗"
-  },
   "sectionAppearance": {
     "message": "外觀"
   },
@@ -101,18 +95,9 @@
   "descEnabledProviders": {
     "message": "選擇在側邊欄中顯示哪些 AI 提供者"
   },
-  "sectionKeyboardShortcuts": {
-    "message": "鍵盤快速鍵"
-  },
 
   "sectionKeyboard": {
     "message": "鍵盤"
-  },
-  "labelEnableShortcut": {
-    "message": "啟用鍵盤快速鍵"
-  },
-  "descEnableShortcut": {
-    "message": "切換可在瀏覽器任何位置開啟 insidebar.ai 的全域快速鍵。"
   },
   "labelDefaultShortcuts": {
     "message": "預設快速鍵"
@@ -122,12 +107,6 @@
   },
   "btnOpenShortcuts": {
     "message": "開啟快速鍵設定"
-  },
-  "labelEdgeConfirm": {
-    "message": "在 Microsoft Edge 中確認"
-  },
-  "descEdgeConfirm": {
-    "message": "Edge 需要您確認一次快速鍵。點擊設定可直接跳轉到 Edge 快速鍵頁面。"
   },
   "btnConfigureEdge": {
     "message": "在 Edge 中設定"
@@ -165,20 +144,11 @@
   "urlPlacementNone": {
     "message": "不包含網址"
   },
-  "sectionEnterBehavior": {
-    "message": "Enter 鍵行為"
-  },
   "descEnterBehavior1": {
     "message": "自訂在 AI 提供者輸入欄位中輸入時 Enter 鍵和修飾鍵的工作方式。"
   },
   "descEnterBehavior2": {
     "message": "<strong>適用於:</strong> ChatGPT、Claude、Gemini、Google(AI 模式)、Grok、DeepSeek 和 Perplexity。"
-  },
-  "labelEnableEnterCustomization": {
-    "message": "啟用 Enter 鍵自訂"
-  },
-  "descEnableEnterCustomization": {
-    "message": "啟用後，將修改所有支援的 AI 提供者的 Enter 鍵行為"
   },
   "labelPreset": {
     "message": "預設"
@@ -213,20 +183,11 @@
   "descPromptLibrary": {
     "message": "匯入為 AI 工作流程、研究、編碼和分析精心挑選的元提示"
   },
-  "labelDefaultLibrary": {
-    "message": "預設提示詞庫"
-  },
-  "descDefaultLibrary": {
-    "message": "用於提示詞最佳化、規劃、編碼、測試、研究、寫作等的元提示。包含對動態範本的變數支援。"
-  },
   "btnImportDefault": {
     "message": "匯入預設提示詞"
   },
   "btnImportCustom": {
     "message": "匯入自訂提示詞"
-  },
-  "noteCustomImport": {
-    "message": "匯入自訂提示詞前，請先閱讀： <code style = \"background: #f5f5f5; padding: 2px 6px; border - radius: 3px;\">data/prompt - libraries/Generate_a_Basic_Prompt_Library.md</code>"
   },
   "sectionDataManagement": {
     "message": "資料管理"
@@ -237,23 +198,8 @@
   "statPrompts": {
     "message": "提示詞"
   },
-  "statStorage": {
-    "message": "已用儲存空間"
-  },
-  "labelExport": {
-    "message": "匯出資料"
-  },
-  "descExport": {
-    "message": "將所有提示詞和設定下載為 JSON"
-  },
   "btnExport": {
     "message": "匯出"
-  },
-  "labelImport": {
-    "message": "匯入資料"
-  },
-  "descImport": {
-    "message": "從 JSON 檔案還原提示詞和設定"
   },
   "btnImport": {
     "message": "匯入"
@@ -294,9 +240,6 @@
   "labelVersion": {
     "message": "版本"
   },
-  "labelBuild": {
-    "message": "建置"
-  },
   "btnCheckUpdates": {
     "message": "檢查更新"
   },
@@ -311,9 +254,6 @@
   },
   "msgThemeUpdated": {
     "message": "主題已更新"
-  },
-  "msgProviderUpdated": {
-    "message": "預設提供者已更新"
   },
   "msgProviderSettingsUpdated": {
     "message": "提供者設定已更新"
@@ -341,12 +281,6 @@
   },
   "msgRememberLastProviderDisabled": {
     "message": "側邊欄將始終開啟預設提供者"
-  },
-  "msgEnterCustomizationEnabled": {
-    "message": "Enter 鍵自訂已啟用"
-  },
-  "msgEnterCustomizationDisabled": {
-    "message": "Enter 鍵自訂已停用"
   },
   "msgSourceUrlPlacementUpdated": {
     "message": "來源網址位置已更新"
@@ -376,14 +310,6 @@
       }
     }
   },
-  "msgPromptsImported": {
-    "message": "成功匯入 $COUNT$ 個提示詞",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
   "msgPromptsImportedWithSkipped": {
     "message": "成功匯入 $IMPORTED$ 個提示詞 ($SKIPPED$ 個已存在)",
     "placeholders": {
@@ -395,19 +321,8 @@
       }
     }
   },
-  "msgPromptsAlreadyExist": {
-    "message": "所有提示詞已存在於您的庫中"
-  },
   "msgAlreadyImported": {
     "message": "已匯入"
-  },
-  "msgCustomPromptsImported": {
-    "message": "成功匯入 $IMPORTED$ 個自訂提示詞",
-    "placeholders": {
-      "imported": {
-        "content": "$1"
-      }
-    }
   },
   "msgHistoryCleared": {
     "message": "所有聊天記錄已被刪除"
@@ -423,12 +338,6 @@
   },
   "msgUpToDate": {
     "message": "您已是最新版本！"
-  },
-  "msgCheckingUpdates": {
-    "message": "正在檢查..."
-  },
-  "msgUpdateCheckFailed": {
-    "message": "檢查更新失敗"
   },
   "msgVersionUnknown": {
     "message": "版本未知"
@@ -463,45 +372,6 @@
         "content": "$4"
       }
     }
-  },
-  "msgUpdateStatusCurrent": {
-    "message": "您已是最新版本！"
-  },
-  "msgUpdateStatusError": {
-    "message": "檢查更新失敗"
-  },
-  "errAtLeastOneProvider": {
-    "message": "至少需要啟用一個提供者"
-  },
-  "errExportFailed": {
-    "message": "匯出資料失敗"
-  },
-  "errImportFailed": {
-    "message": "匯入資料失敗。請檢查檔案格式。"
-  },
-  "errClearHistoryFailed": {
-    "message": "清空聊天記錄失敗"
-  },
-  "errClearPromptsFailed": {
-    "message": "清空提示詞失敗"
-  },
-  "errResetSettingsFailed": {
-    "message": "重設設定失敗"
-  },
-  "errImportDefaultLibrary": {
-    "message": "匯入預設庫失敗"
-  },
-  "errImportCustomLibrary": {
-    "message": "匯入自訂提示詞失敗"
-  },
-  "errInvalidFormat": {
-    "message": "無效格式： 檔案必須包含提示詞的 JSON 陣列"
-  },
-  "errInvalidPromptStructure": {
-    "message": "無效的提示詞結構 - 查看警告了解詳情"
-  },
-  "errInvalidJSON": {
-    "message": "無效的 JSON 檔案格式"
   },
   "errValidationErrors": {
     "message": "$COUNT$ 個提示詞存在驗證錯誤",
@@ -549,9 +419,6 @@
   "sidebarEditingPrompt": {
     "message": "編輯提示詞"
   },
-  "placeholderSearch": {
-    "message": "搜尋..."
-  },
   "placeholderSearchConversations": {
     "message": "搜尋對話..."
   },
@@ -569,12 +436,6 @@
   },
   "btnDelete": {
     "message": "刪除"
-  },
-  "btnEdit": {
-    "message": "編輯"
-  },
-  "btnCopy": {
-    "message": "複製"
   },
   "tooltipSaveNew": {
     "message": "儲存為新提示詞"
@@ -641,9 +502,6 @@
   },
   "labelTopFavorites": {
     "message": "熱門收藏"
-  },
-  "loadingText": {
-    "message": "載入中..."
   },
   "optionsPageTitle": {
     "message": "insidebar.ai - 設定"
@@ -784,9 +642,6 @@
   "msgUnknownCount": {
     "message": "未知數量"
   },
-  "msgDefaultPromptsImported": {
-    "message": "已匯入預設提示詞"
-  },
   "msgConversationsImported": {
     "message": "已匯入對話"
   },
@@ -825,28 +680,5 @@
   },
   "errGitHubFetchFailed": {
     "message": "從 GitHub 取得最新提交失敗"
-  },
-
-  "errExtensionAPI": {
-    "message": "擴充功能 API 不可用。請嘗試重新載入頁面。"
-  },
-  "errExtensionReloaded": {
-    "message": "擴充功能已重新載入。請重新載入此頁面並再次嘗試儲存。"
-  },
-  "errSaveFailed": {
-    "message": "儲存失敗：$ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
-  },
-  "errExtractFailed": {
-    "message": "擷取對話失敗：$ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
   }
 }

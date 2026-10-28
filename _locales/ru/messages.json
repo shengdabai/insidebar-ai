@@ -18,13 +18,6 @@
     "message": "Открыть insidebar.ai"
   },
 
-  "settingsTitle": {
-    "message": "Настройки: insidebar.ai"
-  },
-  "settingsSubtitle": {
-    "message": "Настройте вашу боковую панель с несколькими ИИ"
-  },
-
   "sectionAppearance": {
     "message": "Внешний вид"
   },
@@ -105,18 +98,8 @@
     "message": "Выберите, какие провайдеры ИИ отображаются в боковой панели"
   },
 
-  "sectionKeyboardShortcuts": {
-    "message": "Горячие клавиши"
-  },
-
   "sectionKeyboard": {
     "message": "Клавиатура"
-  },
-  "labelEnableShortcut": {
-    "message": "Включить горячие клавиши"
-  },
-  "descEnableShortcut": {
-    "message": "Переключить глобальное сочетание клавиш для открытия insidebar.ai из любого места браузера."
   },
   "labelDefaultShortcuts": {
     "message": "Горячие клавиши по умолчанию"
@@ -126,12 +109,6 @@
   },
   "btnOpenShortcuts": {
     "message": "Открыть горячие клавиши"
-  },
-  "labelEdgeConfirm": {
-    "message": "Подтвердить в Microsoft Edge"
-  },
-  "descEdgeConfirm": {
-    "message": "Edge требует подтверждения горячих клавиш один раз. Нажмите «Настроить», чтобы перейти на страницу горячих клавиш Edge."
   },
   "btnConfigureEdge": {
     "message": "Настроить в Edge"
@@ -172,20 +149,11 @@
     "message": "Не включать URL"
   },
 
-  "sectionEnterBehavior": {
-    "message": "Поведение клавиши Enter"
-  },
   "descEnterBehavior1": {
     "message": "Настройте, как работают клавиша Enter и модификаторы при вводе в полях ввода провайдеров ИИ."
   },
   "descEnterBehavior2": {
     "message": "<strong>Применяется к:</strong> ChatGPT, Claude, Gemini, Google (AI Mode), Grok, DeepSeek и Perplexity."
-  },
-  "labelEnableEnterCustomization": {
-    "message": "Включить настройку клавиши Enter"
-  },
-  "descEnableEnterCustomization": {
-    "message": "При включении изменяет поведение клавиши Enter для всех поддерживаемых провайдеров ИИ"
   },
   "labelPreset": {
     "message": "Предустановка"
@@ -221,20 +189,11 @@
   "descPromptLibrary": {
     "message": "Импортируйте готовые мета-промпты для работы с ИИ, исследований, программирования и анализа"
   },
-  "labelDefaultLibrary": {
-    "message": "Стандартная библиотека промптов"
-  },
-  "descDefaultLibrary": {
-    "message": "Мета-промпты для улучшения промптов, планирования, программирования, тестирования, исследований, написания текстов и многого другого. Включает поддержку переменных для динамических шаблонов."
-  },
   "btnImportDefault": {
     "message": "Импортировать стандартные промпты"
   },
   "btnImportCustom": {
     "message": "Импортировать пользовательские промпты"
-  },
-  "noteCustomImport": {
-    "message": "Перед импортом пользовательских промптов прочитайте: <code style=\"background: #f5f5f5; padding: 2px 6px; border-radius: 3px;\">data/prompt-libraries/Generate_a_Basic_Prompt_Library.md</code>"
   },
 
   "sectionDataManagement": {
@@ -246,23 +205,8 @@
   "statPrompts": {
     "message": "Промпты"
   },
-  "statStorage": {
-    "message": "Использовано хранилища"
-  },
-  "labelExport": {
-    "message": "Экспорт данных"
-  },
-  "descExport": {
-    "message": "Скачать все промпты и настройки в формате JSON"
-  },
   "btnExport": {
     "message": "Экспортировать"
-  },
-  "labelImport": {
-    "message": "Импорт данных"
-  },
-  "descImport": {
-    "message": "Восстановить промпты и настройки из файла JSON"
   },
   "btnImport": {
     "message": "Импортировать"
@@ -305,9 +249,6 @@
   "labelVersion": {
     "message": "Версия"
   },
-  "labelBuild": {
-    "message": "Сборка"
-  },
   "btnCheckUpdates": {
     "message": "Проверить обновления"
   },
@@ -323,9 +264,6 @@
 
   "msgThemeUpdated": {
     "message": "Тема обновлена"
-  },
-  "msgProviderUpdated": {
-    "message": "Провайдер по умолчанию обновлён"
   },
   "msgProviderSettingsUpdated": {
     "message": "Настройки провайдера обновлены"
@@ -353,12 +291,6 @@
   },
   "msgRememberLastProviderDisabled": {
     "message": "Боковая панель всегда будет открывать провайдер по умолчанию"
-  },
-  "msgEnterCustomizationEnabled": {
-    "message": "Настройка клавиши Enter включена"
-  },
-  "msgEnterCustomizationDisabled": {
-    "message": "Настройка клавиши Enter отключена"
   },
   "msgSourceUrlPlacementUpdated": {
     "message": "Размещение исходного URL обновлено"
@@ -388,14 +320,6 @@
       }
     }
   },
-  "msgPromptsImported": {
-    "message": "Успешно импортировано промптов: $COUNT$",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
   "msgPromptsImportedWithSkipped": {
     "message": "Успешно импортировано промптов: $IMPORTED$ (уже существовало: $SKIPPED$)",
     "placeholders": {
@@ -407,19 +331,8 @@
       }
     }
   },
-  "msgPromptsAlreadyExist": {
-    "message": "Все промпты уже существуют в вашей библиотеке"
-  },
   "msgAlreadyImported": {
     "message": "Уже импортировано"
-  },
-  "msgCustomPromptsImported": {
-    "message": "Успешно импортировано пользовательских промптов: $IMPORTED$",
-    "placeholders": {
-      "imported": {
-        "content": "$1"
-      }
-    }
   },
   "msgHistoryCleared": {
     "message": "Вся история чатов удалена"
@@ -435,12 +348,6 @@
   },
   "msgUpToDate": {
     "message": "У вас последняя версия!"
-  },
-  "msgCheckingUpdates": {
-    "message": "Проверка..."
-  },
-  "msgUpdateCheckFailed": {
-    "message": "Не удалось проверить обновления"
   },
   "msgVersionUnknown": {
     "message": "Версия неизвестна"
@@ -476,46 +383,7 @@
       }
     }
   },
-  "msgUpdateStatusCurrent": {
-    "message": "У вас последняя версия!"
-  },
-  "msgUpdateStatusError": {
-    "message": "Не удалось проверить обновления"
-  },
 
-  "errAtLeastOneProvider": {
-    "message": "Должен быть включён хотя бы один провайдер"
-  },
-  "errExportFailed": {
-    "message": "Не удалось экспортировать данные"
-  },
-  "errImportFailed": {
-    "message": "Не удалось импортировать данные. Проверьте формат файла."
-  },
-  "errClearHistoryFailed": {
-    "message": "Не удалось очистить историю чатов"
-  },
-  "errClearPromptsFailed": {
-    "message": "Не удалось очистить промпты"
-  },
-  "errResetSettingsFailed": {
-    "message": "Не удалось сбросить настройки"
-  },
-  "errImportDefaultLibrary": {
-    "message": "Не удалось импортировать стандартную библиотеку"
-  },
-  "errImportCustomLibrary": {
-    "message": "Не удалось импортировать пользовательские промпты"
-  },
-  "errInvalidFormat": {
-    "message": "Неверный формат: файл должен содержать JSON-массив промптов"
-  },
-  "errInvalidPromptStructure": {
-    "message": "Неверная структура промпта — см. подробности в уведомлении"
-  },
-  "errInvalidJSON": {
-    "message": "Неверный формат файла JSON"
-  },
   "errValidationErrors": {
     "message": "Промптов с ошибками валидации: $COUNT$",
     "placeholders": {
@@ -565,9 +433,6 @@
   "sidebarEditingPrompt": {
     "message": "Редактирование промпта"
   },
-  "placeholderSearch": {
-    "message": "Поиск..."
-  },
   "placeholderSearchConversations": {
     "message": "Поиск бесед..."
   },
@@ -585,12 +450,6 @@
   },
   "btnDelete": {
     "message": "Удалить"
-  },
-  "btnEdit": {
-    "message": "Редактировать"
-  },
-  "btnCopy": {
-    "message": "Копировать"
   },
   "tooltipSaveNew": {
     "message": "Сохранить как новый промпт"
@@ -657,9 +516,6 @@
   },
   "labelTopFavorites": {
     "message": "Топ избранного"
-  },
-  "loadingText": {
-    "message": "Загрузка..."
   },
 
   "optionsPageTitle": {
@@ -801,9 +657,6 @@
   "msgUnknownCount": {
     "message": "Неизвестное количество"
   },
-  "msgDefaultPromptsImported": {
-    "message": "Стандартные промпты импортированы"
-  },
   "msgConversationsImported": {
     "message": "Беседы импортированы"
   },
@@ -841,28 +694,5 @@
   },
   "btnOverwrite": {
     "message": "Перезаписать"
-  },
-
-  "errExtensionAPI": {
-    "message": "API расширения недоступен. Попробуйте перезагрузить страницу."
-  },
-  "errExtensionReloaded": {
-    "message": "Расширение было перезагружено. Перезагрузите эту страницу и попробуйте сохранить снова."
-  },
-  "errSaveFailed": {
-    "message": "Ошибка сохранения: $ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
-  },
-  "errExtractFailed": {
-    "message": "Ошибка извлечения разговора: $ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
   }
 }

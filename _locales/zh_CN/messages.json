@@ -17,12 +17,6 @@
   "actionDefaultTitle": {
     "message": "打开 insidebar.ai"
   },
-  "settingsTitle": {
-    "message": "设置： insidebar.ai"
-  },
-  "settingsSubtitle": {
-    "message": "自定义您的多 AI 侧边栏体验"
-  },
   "sectionAppearance": {
     "message": "外观"
   },
@@ -101,18 +95,9 @@
   "descEnabledProviders": {
     "message": "选择在侧边栏中显示哪些 AI 提供商"
   },
-  "sectionKeyboardShortcuts": {
-    "message": "键盘快捷键"
-  },
 
   "sectionKeyboard": {
     "message": "键盘"
-  },
-  "labelEnableShortcut": {
-    "message": "启用键盘快捷键"
-  },
-  "descEnableShortcut": {
-    "message": "切换可在浏览器任何位置打开 insidebar.ai 的全局快捷键。"
   },
   "labelDefaultShortcuts": {
     "message": "默认快捷键"
@@ -122,12 +107,6 @@
   },
   "btnOpenShortcuts": {
     "message": "打开快捷键设置"
-  },
-  "labelEdgeConfirm": {
-    "message": "在 Microsoft Edge 中确认"
-  },
-  "descEdgeConfirm": {
-    "message": "Edge 需要您确认一次快捷键。点击配置可直接跳转到 Edge 快捷键页面。"
   },
   "btnConfigureEdge": {
     "message": "在 Edge 中配置"
@@ -167,20 +146,11 @@
     "message": "不包含网址"
   },
 
-  "sectionEnterBehavior": {
-    "message": "回车键行为"
-  },
   "descEnterBehavior1": {
     "message": "自定义在 AI 提供商输入字段中输入时回车键和修饰键的工作方式。"
   },
   "descEnterBehavior2": {
     "message": "<strong>适用于:</strong> ChatGPT、Claude、Gemini、Google(AI 模式)、Grok、DeepSeek 和 Perplexity。"
-  },
-  "labelEnableEnterCustomization": {
-    "message": "启用回车键自定义"
-  },
-  "descEnableEnterCustomization": {
-    "message": "启用后，将修改所有支持的 AI 提供商的回车键行为"
   },
   "labelPreset": {
     "message": "预设"
@@ -215,20 +185,11 @@
   "descPromptLibrary": {
     "message": "导入为 AI 工作流、研究、编码和分析精心挑选的元提示"
   },
-  "labelDefaultLibrary": {
-    "message": "默认提示词库"
-  },
-  "descDefaultLibrary": {
-    "message": "用于提示词优化、规划、编码、测试、研究、写作等的元提示。包含对动态模板的变量支持。"
-  },
   "btnImportDefault": {
     "message": "导入默认提示词"
   },
   "btnImportCustom": {
     "message": "导入自定义提示词"
-  },
-  "noteCustomImport": {
-    "message": "导入自定义提示词前，请先阅读： <code style = \"background: #f5f5f5; padding: 2px 6px; border - radius: 3px;\">data/prompt - libraries/Generate_a_Basic_Prompt_Library.md</code>"
   },
   "sectionDataManagement": {
     "message": "数据管理"
@@ -239,23 +200,8 @@
   "statPrompts": {
     "message": "提示词"
   },
-  "statStorage": {
-    "message": "已用存储"
-  },
-  "labelExport": {
-    "message": "导出数据"
-  },
-  "descExport": {
-    "message": "将所有提示词和设置下载为 JSON"
-  },
   "btnExport": {
     "message": "导出"
-  },
-  "labelImport": {
-    "message": "导入数据"
-  },
-  "descImport": {
-    "message": "从 JSON 文件恢复提示词和设置"
   },
   "btnImport": {
     "message": "导入"
@@ -296,9 +242,6 @@
   "labelVersion": {
     "message": "版本"
   },
-  "labelBuild": {
-    "message": "构建"
-  },
   "btnCheckUpdates": {
     "message": "检查更新"
   },
@@ -313,9 +256,6 @@
   },
   "msgThemeUpdated": {
     "message": "主题已更新"
-  },
-  "msgProviderUpdated": {
-    "message": "默认提供商已更新"
   },
   "msgProviderSettingsUpdated": {
     "message": "提供商设置已更新"
@@ -343,12 +283,6 @@
   },
   "msgRememberLastProviderDisabled": {
     "message": "侧边栏将始终打开默认提供商"
-  },
-  "msgEnterCustomizationEnabled": {
-    "message": "回车键自定义已启用"
-  },
-  "msgEnterCustomizationDisabled": {
-    "message": "回车键自定义已禁用"
   },
   "msgSourceUrlPlacementUpdated": {
     "message": "来源网址位置已更新"
@@ -378,14 +312,6 @@
       }
     }
   },
-  "msgPromptsImported": {
-    "message": "成功导入 $COUNT$ 个提示词",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
   "msgPromptsImportedWithSkipped": {
     "message": "成功导入 $IMPORTED$ 个提示词 ($SKIPPED$ 个已存在)",
     "placeholders": {
@@ -397,19 +323,8 @@
       }
     }
   },
-  "msgPromptsAlreadyExist": {
-    "message": "所有提示词已存在于您的库中"
-  },
   "msgAlreadyImported": {
     "message": "已导入"
-  },
-  "msgCustomPromptsImported": {
-    "message": "成功导入 $IMPORTED$ 个自定义提示词",
-    "placeholders": {
-      "imported": {
-        "content": "$1"
-      }
-    }
   },
   "msgHistoryCleared": {
     "message": "所有聊天历史已被删除"
@@ -425,12 +340,6 @@
   },
   "msgUpToDate": {
     "message": "您已是最新版本！"
-  },
-  "msgCheckingUpdates": {
-    "message": "正在检查..."
-  },
-  "msgUpdateCheckFailed": {
-    "message": "检查更新失败"
   },
   "msgVersionUnknown": {
     "message": "版本未知"
@@ -465,45 +374,6 @@
         "content": "$4"
       }
     }
-  },
-  "msgUpdateStatusCurrent": {
-    "message": "您已是最新版本！"
-  },
-  "msgUpdateStatusError": {
-    "message": "检查更新失败"
-  },
-  "errAtLeastOneProvider": {
-    "message": "至少需要启用一个提供商"
-  },
-  "errExportFailed": {
-    "message": "导出数据失败"
-  },
-  "errImportFailed": {
-    "message": "导入数据失败。请检查文件格式。"
-  },
-  "errClearHistoryFailed": {
-    "message": "清空聊天历史失败"
-  },
-  "errClearPromptsFailed": {
-    "message": "清空提示词失败"
-  },
-  "errResetSettingsFailed": {
-    "message": "重置设置失败"
-  },
-  "errImportDefaultLibrary": {
-    "message": "导入默认库失败"
-  },
-  "errImportCustomLibrary": {
-    "message": "导入自定义提示词失败"
-  },
-  "errInvalidFormat": {
-    "message": "无效格式： 文件必须包含提示词的 JSON 数组"
-  },
-  "errInvalidPromptStructure": {
-    "message": "无效的提示词结构 - 查看警告了解详情"
-  },
-  "errInvalidJSON": {
-    "message": "无效的 JSON 文件格式"
   },
   "errValidationErrors": {
     "message": "$COUNT$ 个提示词存在验证错误",
@@ -551,9 +421,6 @@
   "sidebarEditingPrompt": {
     "message": "编辑提示词"
   },
-  "placeholderSearch": {
-    "message": "搜索..."
-  },
   "placeholderSearchConversations": {
     "message": "搜索对话..."
   },
@@ -571,12 +438,6 @@
   },
   "btnDelete": {
     "message": "删除"
-  },
-  "btnEdit": {
-    "message": "编辑"
-  },
-  "btnCopy": {
-    "message": "复制"
   },
   "tooltipSaveNew": {
     "message": "保存为新提示词"
@@ -643,9 +504,6 @@
   },
   "labelTopFavorites": {
     "message": "热门收藏"
-  },
-  "loadingText": {
-    "message": "加载中..."
   },
   "optionsPageTitle": {
     "message": "insidebar.ai - 设置"
@@ -786,9 +644,6 @@
   "msgUnknownCount": {
     "message": "未知数量"
   },
-  "msgDefaultPromptsImported": {
-    "message": "已导入默认提示词"
-  },
   "msgConversationsImported": {
     "message": "已导入对话"
   },
@@ -826,28 +681,5 @@
   },
   "btnOverwrite": {
     "message": "覆盖"
-  },
-
-  "errExtensionAPI": {
-    "message": "扩展 API 不可用。请尝试重新加载页面。"
-  },
-  "errExtensionReloaded": {
-    "message": "扩展已重新加载。请重新加载此页面并重试保存。"
-  },
-  "errSaveFailed": {
-    "message": "保存失败：$ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
-  },
-  "errExtractFailed": {
-    "message": "提取对话失败：$ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
   }
 }

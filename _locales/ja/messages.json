@@ -17,12 +17,6 @@
   "actionDefaultTitle": {
     "message": "insidebar.ai を開く"
   },
-  "settingsTitle": {
-    "message": "設定： insidebar.ai"
-  },
-  "settingsSubtitle": {
-    "message": "マルチ AI サイドバー体験をカスタマイズ"
-  },
   "sectionAppearance": {
     "message": "外観"
   },
@@ -101,18 +95,9 @@
   "descEnabledProviders": {
     "message": "サイドバーに表示する AI プロバイダーを選択してください"
   },
-  "sectionKeyboardShortcuts": {
-    "message": "キーボードショートカット"
-  },
 
   "sectionKeyboard": {
     "message": "キーボード"
-  },
-  "labelEnableShortcut": {
-    "message": "キーボードショートカットを有効にする"
-  },
-  "descEnableShortcut": {
-    "message": "ブラウザのどこからでも insidebar.ai を開くグローバルショートカットを切り替えます。"
   },
   "labelDefaultShortcuts": {
     "message": "デフォルトショートカット"
@@ -122,12 +107,6 @@
   },
   "btnOpenShortcuts": {
     "message": "ショートカットを開く"
-  },
-  "labelEdgeConfirm": {
-    "message": "Microsoft Edge で確認"
-  },
-  "descEdgeConfirm": {
-    "message": "Edge ではショートカットを一度確認する必要があります。設定をクリックすると、Edge ショートカットページに直接移動します。"
   },
   "btnConfigureEdge": {
     "message": "Edge で設定"
@@ -165,20 +144,11 @@
   "urlPlacementNone": {
     "message": "URL を含めない"
   },
-  "sectionEnterBehavior": {
-    "message": "Enter キーの動作"
-  },
   "descEnterBehavior1": {
     "message": "AI プロバイダーの入力フィールドで Enter キーと修飾キーがどのように機能するかをカスタマイズします。"
   },
   "descEnterBehavior2": {
     "message": "<strong>適用先:</strong> ChatGPT、Claude、Gemini、Google（AI モード）、Grok、DeepSeek、Perplexity。"
-  },
-  "labelEnableEnterCustomization": {
-    "message": "Enter キーのカスタマイズを有効にする"
-  },
-  "descEnableEnterCustomization": {
-    "message": "有効にすると、サポートされているすべての AI プロバイダーで Enter キーの動作を変更します"
   },
   "labelPreset": {
     "message": "プリセット"
@@ -213,20 +183,11 @@
   "descPromptLibrary": {
     "message": "AI ワークフロー、研究、コーディング、分析のための厳選されたメタプロンプトをインポート"
   },
-  "labelDefaultLibrary": {
-    "message": "デフォルトプロンプトライブラリ"
-  },
-  "descDefaultLibrary": {
-    "message": "プロンプトの改良、計画、コーディング、テスト、研究、執筆などのためのメタプロンプト。動的テンプレートのための変数サポートが含まれています。"
-  },
   "btnImportDefault": {
     "message": "デフォルトプロンプトをインポート"
   },
   "btnImportCustom": {
     "message": "カスタムプロンプトをインポート"
-  },
-  "noteCustomImport": {
-    "message": "カスタムプロンプトをインポートする前に、次をお読みください： <code style = \"background: #f5f5f5; padding: 2px 6px; border - radius: 3px;\">data/prompt - libraries/Generate_a_Basic_Prompt_Library.md</code>"
   },
   "sectionDataManagement": {
     "message": "データ管理"
@@ -237,23 +198,8 @@
   "statPrompts": {
     "message": "プロンプト"
   },
-  "statStorage": {
-    "message": "使用中のストレージ"
-  },
-  "labelExport": {
-    "message": "データをエクスポート"
-  },
-  "descExport": {
-    "message": "すべてのプロンプトと設定を JSON でダウンロード"
-  },
   "btnExport": {
     "message": "エクスポート"
-  },
-  "labelImport": {
-    "message": "データをインポート"
-  },
-  "descImport": {
-    "message": "JSON ファイルからプロンプトと設定を復元"
   },
   "btnImport": {
     "message": "インポート"
@@ -294,9 +240,6 @@
   "labelVersion": {
     "message": "バージョン"
   },
-  "labelBuild": {
-    "message": "ビルド"
-  },
   "btnCheckUpdates": {
     "message": "アップデートを確認"
   },
@@ -311,9 +254,6 @@
   },
   "msgThemeUpdated": {
     "message": "テーマが更新されました"
-  },
-  "msgProviderUpdated": {
-    "message": "デフォルトプロバイダーが更新されました"
   },
   "msgProviderSettingsUpdated": {
     "message": "プロバイダー設定が更新されました"
@@ -341,12 +281,6 @@
   },
   "msgRememberLastProviderDisabled": {
     "message": "サイドバーは常にデフォルトプロバイダーで開きます"
-  },
-  "msgEnterCustomizationEnabled": {
-    "message": "Enter キーのカスタマイズが有効になりました"
-  },
-  "msgEnterCustomizationDisabled": {
-    "message": "Enter キーのカスタマイズが無効になりました"
   },
   "msgSourceUrlPlacementUpdated": {
     "message": "ソース URL の配置が更新されました"
@@ -376,14 +310,6 @@
       }
     }
   },
-  "msgPromptsImported": {
-    "message": "$COUNT$ 個のプロンプトを正常にインポートしました",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
   "msgPromptsImportedWithSkipped": {
     "message": "$IMPORTED$ 個のプロンプトを正常にインポートしました（$SKIPPED$ 個はすでに存在）",
     "placeholders": {
@@ -395,19 +321,8 @@
       }
     }
   },
-  "msgPromptsAlreadyExist": {
-    "message": "すべてのプロンプトがすでにライブラリに存在します"
-  },
   "msgAlreadyImported": {
     "message": "インポート済み"
-  },
-  "msgCustomPromptsImported": {
-    "message": "$IMPORTED$ 個のカスタムプロンプトを正常にインポートしました",
-    "placeholders": {
-      "imported": {
-        "content": "$1"
-      }
-    }
   },
   "msgHistoryCleared": {
     "message": "すべてのチャット履歴が削除されました"
@@ -423,12 +338,6 @@
   },
   "msgUpToDate": {
     "message": "最新バージョンです！"
-  },
-  "msgCheckingUpdates": {
-    "message": "確認中..."
-  },
-  "msgUpdateCheckFailed": {
-    "message": "アップデートの確認に失敗しました"
   },
   "msgVersionUnknown": {
     "message": "バージョン不明"
@@ -463,45 +372,6 @@
         "content": "$4"
       }
     }
-  },
-  "msgUpdateStatusCurrent": {
-    "message": "最新バージョンです！"
-  },
-  "msgUpdateStatusError": {
-    "message": "アップデートの確認に失敗しました"
-  },
-  "errAtLeastOneProvider": {
-    "message": "少なくとも 1 つのプロバイダーを有効にする必要があります"
-  },
-  "errExportFailed": {
-    "message": "データのエクスポートに失敗しました"
-  },
-  "errImportFailed": {
-    "message": "データのインポートに失敗しました。ファイル形式を確認してください。"
-  },
-  "errClearHistoryFailed": {
-    "message": "チャット履歴のクリアに失敗しました"
-  },
-  "errClearPromptsFailed": {
-    "message": "プロンプトのクリアに失敗しました"
-  },
-  "errResetSettingsFailed": {
-    "message": "設定のリセットに失敗しました"
-  },
-  "errImportDefaultLibrary": {
-    "message": "デフォルトライブラリのインポートに失敗しました"
-  },
-  "errImportCustomLibrary": {
-    "message": "カスタムプロンプトのインポートに失敗しました"
-  },
-  "errInvalidFormat": {
-    "message": "無効な形式： ファイルにはプロンプトの JSON 配列が含まれている必要があります"
-  },
-  "errInvalidPromptStructure": {
-    "message": "無効なプロンプト構造 - 詳細についてはアラートを参照してください"
-  },
-  "errInvalidJSON": {
-    "message": "無効な JSON ファイル形式"
   },
   "errValidationErrors": {
     "message": "$COUNT$ 個のプロンプトに検証エラーがあります",
@@ -549,9 +419,6 @@
   "sidebarEditingPrompt": {
     "message": "プロンプトを編集"
   },
-  "placeholderSearch": {
-    "message": "検索..."
-  },
   "placeholderSearchConversations": {
     "message": "会話を検索..."
   },
@@ -569,12 +436,6 @@
   },
   "btnDelete": {
     "message": "削除"
-  },
-  "btnEdit": {
-    "message": "編集"
-  },
-  "btnCopy": {
-    "message": "コピー"
   },
   "tooltipSaveNew": {
     "message": "新しいプロンプトとして保存"
@@ -641,9 +502,6 @@
   },
   "labelTopFavorites": {
     "message": "トップお気に入り"
-  },
-  "loadingText": {
-    "message": "読み込み中..."
   },
   "optionsPageTitle": {
     "message": "insidebar.ai - 設定"
@@ -784,9 +642,6 @@
   "msgUnknownCount": {
     "message": "不明なカウント"
   },
-  "msgDefaultPromptsImported": {
-    "message": "デフォルトプロンプトをインポートしました"
-  },
   "msgConversationsImported": {
     "message": "会話をインポートしました"
   },
@@ -825,28 +680,5 @@
   },
   "errGitHubFetchFailed": {
     "message": "GitHub から最新のコミットを取得できませんでした"
-  },
-
-  "errExtensionAPI": {
-    "message": "拡張機能 API が利用できません。ページを再読み込みしてみてください。"
-  },
-  "errExtensionReloaded": {
-    "message": "拡張機能が再読み込みされました。このページを再読み込みして、もう一度保存してみてください。"
-  },
-  "errSaveFailed": {
-    "message": "保存に失敗しました：$ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
-  },
-  "errExtractFailed": {
-    "message": "会話の抽出に失敗しました：$ERROR$",
-    "placeholders": {
-      "error": {
-        "content": "$1"
-      }
-    }
   }
 }
