@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { createMemoryDB } from './helpers/memory-idb.js';
 
 // Exercise the real import/save/search code against a small asynchronous store.
 // This does not model IndexedDB transactions or migrations.
@@ -12,21 +13,7 @@ describe('data imports', () => {
     vi.resetModules();
     prompts = [];
     conversations = [];
-    const request = (result) => {
-      const req = { result };
-      queueMicrotask(() => req.onsuccess?.({ target: req }));
-      return req;
-    };
-    const store = (rows) => ({
-      getAll: () => request(structuredClone(rows)),
-      add: (row) => {
-        const id = rows.length + 1;
-        rows.push({ ...structuredClone(row), id });
-        return request(id);
-      },
-    });
-    const db = { transaction: () => ({ objectStore: (name) => store(name === 'prompts' ? prompts : conversations) }) };
-    vi.stubGlobal('indexedDB', { open: () => request(db) });
+    vi.stubGlobal('indexedDB', createMemoryDB({ prompts, conversations }));
     manager = await import('../modules/prompt-manager.js');
     historyManager = await import('../modules/history-manager.js');
   });
@@ -106,5 +93,34 @@ describe('data imports', () => {
     await expect(historyManager.importConversations({ conversations: [{ title: 'Chat', content: 'New' }] }, 'typo'))
       .rejects.toThrow('Invalid import strategy');
     expect(conversations).toHaveLength(0);
+  });
+
+  it.each(['skip', 'overwrite'])('ignores imported overwriteId under %s strategy', async (strategy) => {
+    const existing = await historyManager.saveConversation({ title: 'Private', content: 'Keep original' });
+    const result = await historyManager.importConversations({ conversations: [
+      { title: 'Imported', content: 'Untrusted file', overwriteId: existing.id, id: existing.id },
+    ] }, strategy);
+    expect(result).toEqual({ imported: 1, skipped: 0, errors: [] });
+    expect(conversations).toHaveLength(2);
+    expect(await historyManager.getConversation(existing.id)).toEqual(existing);
+    expect(conversations[1]).not.toHaveProperty('overwriteId');
+  });
+
+  it('deduplicates a maximum-length default-library title with surrounding whitespace', async () => {
+    const title = 'A'.repeat(200);
+    await manager.savePrompt({ title, content: 'Existing' });
+    const result = await manager.importDefaultLibrary({ prompts: [
+      { title: `  ${title}  `, content: 'Duplicate' },
+    ] });
+    expect(result).toEqual({ imported: 0, skipped: 1, errors: [] });
+    expect(prompts).toHaveLength(1);
+  });
+
+  it('uses the saved fallback title when deduplicating the default library', async () => {
+    const result = await manager.importDefaultLibrary({ prompts: [
+      { content: 'First' }, { title: 'Untitled Prompt', content: 'Second' },
+    ] });
+    expect(result).toEqual({ imported: 1, skipped: 1, errors: [] });
+    expect(prompts[0].content).toBe('First');
   });
 });

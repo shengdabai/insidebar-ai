@@ -71,6 +71,13 @@ To try the extension locally, open `chrome://extensions` (or `edge://extensions`
 
 Before release, manually check opening the sidebar, switching providers, inserting a saved prompt, saving a conversation, and searching saved history. The unit suite uses browser API mocks; it does not prove that current provider websites can load or accept input in the extension.
 
+## Local Data Behavior
+
+- Settings imports use `skip`: prompt titles are compared without case or surrounding whitespace. Conversations use the existing same-title, timestamp-within-one-minute duplicate rule.
+- Imported record IDs and the internal conversation `overwriteId` control cannot select a local record to replace. The programmatic `overwrite` import strategy currently appends records; it does not replace matching records or clear a library.
+- Provider search accepts multiple provider values, partial names, case differences and spelling tolerance. Search scans saved conversations before applying these filters.
+- Saved conversation Markdown keeps ordinary formatting, tables, code and disabled task checkboxes. Active embeds, forms, scripts, styles and unsafe URL protocols are removed when displayed. Original-conversation links accept HTTP(S) only. External Markdown images can still load remote resources when displayed.
+
 ## Operating Notes
 
 - Keep real credentials out of the repository. Use local environment files, GitHub repository secrets, or the deployment platform secret manager.

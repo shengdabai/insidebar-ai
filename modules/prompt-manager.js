@@ -458,7 +458,7 @@ export async function importDefaultLibrary(libraryData) {
   for (const promptData of libraryData.prompts) {
     try {
       // Check if already imported by title
-      const titleKey = promptData.title.toLowerCase().trim();
+      const titleKey = sanitizeString(promptData.title || 'Untitled Prompt', MAX_TITLE_LENGTH).toLowerCase();
       if (existingTitles.has(titleKey)) {
         results.skipped++;
         continue;

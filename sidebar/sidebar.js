@@ -1,5 +1,5 @@
 import { PROVIDERS, getProviderById, getProviderByIdWithSettings, getEnabledProviders } from '../modules/providers.js';
-import { escapeHtml } from '../modules/html-utils.js';
+import { escapeHtml, sanitizeHtml, renderExternalLink } from '../modules/html-utils.js';
 import { applyTheme } from '../modules/theme-manager.js';
 import { t, translatePage, initializeLanguage } from '../modules/i18n.js';
 import {
@@ -1500,40 +1500,6 @@ async function sendWorkspaceToProvider() {
   }
 }
 
-// Sanitize HTML to prevent XSS attacks
-// Allows safe markdown-generated tags but strips dangerous attributes and scripts
-function sanitizeHtml(html) {
-  const temp = document.createElement('div');
-  temp.innerHTML = html;
-
-  // Remove script tags and event handlers
-  const scripts = temp.querySelectorAll('script');
-  scripts.forEach(script => script.remove());
-
-  // Remove potentially dangerous attributes
-  const allElements = temp.querySelectorAll('*');
-  allElements.forEach(el => {
-    // Remove event handler attributes
-    Array.from(el.attributes).forEach(attr => {
-      if (attr.name.startsWith('on')) {
-        el.removeAttribute(attr.name);
-      }
-    });
-
-    // Remove dangerous attributes
-    ['javascript:', 'data:', 'vbscript:'].forEach(protocol => {
-      ['href', 'src', 'action', 'formaction'].forEach(attr => {
-        const value = el.getAttribute(attr);
-        if (value && value.toLowerCase().includes(protocol)) {
-          el.removeAttribute(attr);
-        }
-      });
-    });
-  });
-
-  return temp.innerHTML;
-}
-
 // Chat History state
 let currentSearchQuery = '';
 const SEARCH_HISTORY_KEY = 'insidebar_search_history';
@@ -1717,9 +1683,8 @@ async function renderConversationList(conversations = null) {
     const conversationUrl = conv.url;
 
     // Create date/time display - make it a link if URL is available
-    const dateTimeDisplay = conversationUrl
-      ? `<a href="${escapeHtml(conversationUrl)}" target="_blank" class="conversation-item-date conversation-item-link" title="Open original conversation">${date} ${time}</a>`
-      : `<span class="conversation-item-date">${date} ${time}</span>`;
+    const dateTimeDisplay = renderExternalLink(conversationUrl, `${date} ${time}`,
+      'conversation-item-date conversation-item-link', 'Open original conversation');
 
     // Get provider data for icon
     const provider = getProviderById(conv.provider.toLowerCase());
@@ -1947,11 +1912,8 @@ async function viewConversation(id) {
   // Create timestamp display - make it a link if URL is available
   const timestampEl = document.getElementById('view-conversation-timestamp');
   const date = new Date(conversation.timestamp).toLocaleString();
-  if (conversationUrl) {
-    timestampEl.innerHTML = `<strong>Date:</strong> <a href="${escapeHtml(conversationUrl)}" target="_blank" class="conversation-link" title="Open original conversation">${date}</a>`;
-  } else {
-    timestampEl.innerHTML = `<strong>Date:</strong> ${date}`;
-  }
+  timestampEl.innerHTML = '<strong>Date:</strong> ' +
+    renderExternalLink(conversationUrl, date, 'conversation-link', 'Open original conversation');
 
   const tagsEl = document.getElementById('view-conversation-tags');
   if (conversation.tags.length > 0) {

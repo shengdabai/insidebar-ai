@@ -1,5 +1,6 @@
 // T074: Internationalization (i18n) utility module
 // Provides helper functions for Chrome i18n API
+import { escapeHtml } from './html-utils.js';
 
 // Translation cache for custom language override
 let translationCache = null;
@@ -77,9 +78,15 @@ function getBrowserLocale() {
  * Get translated message with substitutions support
  * @param {string} key - Message key from messages.json
  * @param {string|string[]} substitutions - Optional substitution values
+ * @param {{escapeSubstitutions?: boolean}} options - Escape external values when rendering trusted catalog HTML
  * @returns {string} Translated message
  */
-export function t(key, substitutions = null) {
+export function t(key, substitutions = null, { escapeSubstitutions = false } = {}) {
+  // Only trusted catalog markup may be rendered as HTML; external values are text.
+  if (escapeSubstitutions && substitutions !== null) {
+    substitutions = Array.isArray(substitutions)
+      ? substitutions.map(escapeHtml) : escapeHtml(substitutions);
+  }
   // If we have custom translations loaded, use them
   if (translationCache && translationCache[key]) {
     let message = translationCache[key].message || '';
@@ -87,17 +94,12 @@ export function t(key, substitutions = null) {
     // Handle substitutions
     if (substitutions) {
       const subs = Array.isArray(substitutions) ? substitutions : [substitutions];
-      subs.forEach((sub, index) => {
-        const placeholder = `$${index + 1}`;
-        message = message.replace(new RegExp(`\\$${index + 1}`, 'g'), sub);
-        // Also try $PLACEHOLDER$ format
-        if (translationCache[key].placeholders) {
-          Object.entries(translationCache[key].placeholders).forEach(([name, config]) => {
-            if (config.content === placeholder) {
-              message = message.replace(new RegExp(`\\$${name.toUpperCase()}\\$`, 'g'), sub);
-            }
-          });
-        }
+      // Replace catalog slots once. Dollar signs and slots inside values stay literal.
+      message = message.replace(/\$([A-Za-z_][\w@]*)\$|\$(\d+)/g, (match, name, number) => {
+        const content = name && Object.entries(translationCache[key].placeholders || {})
+          .find(([key]) => key.toLowerCase() === name.toLowerCase())?.[1].content;
+        const slot = number || content?.match(/^\$(\d+)$/)?.[1];
+        return slot && subs[Number(slot) - 1] !== undefined ? String(subs[Number(slot) - 1]) : match;
       });
     }
 

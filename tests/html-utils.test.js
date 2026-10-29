@@ -1,6 +1,26 @@
 // Tests for HTML utility functions - Critical for XSS protection
 import { describe, it, expect } from 'vitest';
-import { escapeHtml, html, unsafeHtml, renderList } from '../modules/html-utils.js';
+import { escapeHtml, html, unsafeHtml, renderList, renderExternalLink } from '../modules/html-utils.js';
+
+describe('history external links', () => {
+  it.each(['javascript:alert(1)', 'java\nscript:alert(1)', 'data:text/html,unsafe', '', null])(
+    'renders %j as inert text', (url) => {
+      const doc = new DOMParser().parseFromString(renderExternalLink(url, 'Date'), 'text/html');
+      expect(doc.querySelector('a')).toBeNull();
+      expect(doc.body.textContent).toBe('Date');
+    }
+  );
+
+  it('escapes link text and attributes while preserving an ordinary URL', () => {
+    const doc = new DOMParser().parseFromString(renderExternalLink('https://example.invalid/chat',
+      '<unsafe>', 'date', '" onclick="unsafe()'), 'text/html');
+    const link = doc.querySelector('a');
+    expect(link.getAttribute('href')).toBe('https://example.invalid/chat');
+    expect(link.getAttribute('rel')).toBe('noopener noreferrer');
+    expect(link.textContent).toBe('<unsafe>');
+    expect(link.hasAttribute('onclick')).toBe(false);
+  });
+});
 
 describe('html-utils module', () => {
   describe('escapeHtml', () => {
