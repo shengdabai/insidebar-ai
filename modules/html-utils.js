@@ -3,7 +3,8 @@
  */
 
 /**
- * Escapes HTML special characters to prevent XSS
+ * Escapes HTML text and quoted attribute values to prevent markup injection.
+ * URL protocols and unquoted attributes require separate validation.
  * @param {string} text - Text to escape
  * @returns {string} - Escaped HTML-safe text
  */
@@ -14,7 +15,7 @@ export function escapeHtml(text) {
 
   const div = document.createElement('div');
   div.textContent = String(text);
-  return div.innerHTML;
+  return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 /**

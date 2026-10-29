@@ -610,6 +610,9 @@ export async function importConversations(data, mergeStrategy = 'skip') {
   if (!data || !data.conversations || !Array.isArray(data.conversations)) {
     throw new Error('Invalid import data format');
   }
+  if (!['skip', 'overwrite'].includes(mergeStrategy)) {
+    throw new Error('Invalid import strategy');
+  }
 
   const results = {
     imported: 0,
@@ -641,7 +644,7 @@ export async function importConversations(data, mergeStrategy = 'skip') {
         }
       }
     } catch (error) {
-      results.errors.push({ conversation: conversationData.title, error: error.message });
+      results.errors.push({ conversation: conversationData?.title, error: error.message });
     }
   }
 
