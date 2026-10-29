@@ -21,6 +21,28 @@ describe('saved conversation markdown safety', () => {
     expect(doc.querySelector('a').getAttribute('href')).toBe('https://example.invalid/docs');
   });
 
+  it.each(['left', 'center', 'right'])('preserves %s alignment on table cells', (align) => {
+    const doc = parse(sanitizeHtml(`<table><thead><tr><th align="${align}">Heading</th></tr></thead>` +
+      `<tbody><tr><td align="${align}">Cell</td></tr></tbody></table>`));
+    expect(doc.querySelector('th').getAttribute('align')).toBe(align);
+    expect(doc.querySelector('td').getAttribute('align')).toBe(align);
+  });
+
+  it.each(['justify', 'char', '', 'left right', 'left; color:red', 'left\nright'])(
+    'removes unsupported table cell alignment %j', (align) => {
+      const doc = parse(sanitizeHtml(`<table><thead><tr><th align="${align}">Heading</th></tr></thead>` +
+        `<tbody><tr><td align="${align}">Cell</td></tr></tbody></table>`));
+      expect(doc.querySelector('th').hasAttribute('align')).toBe(false);
+      expect(doc.querySelector('td').hasAttribute('align')).toBe(false);
+    }
+  );
+
+  it('removes alignment from elements other than table cells', () => {
+    const doc = parse(sanitizeHtml('<div align="left"><p align="center">Text</p></div>' +
+      '<table align="right"><tbody align="left"><tr align="center"><td>Cell</td></tr></tbody></table>'));
+    expect(doc.querySelector('[align]')).toBeNull();
+  });
+
   it.each(['javascript:alert(1)', 'java\nscript:alert(1)', 'java\tscript:alert(1)',
     'data:text/html,unsafe', 'vbscript:unsafe', 'file:///tmp/test'])('removes unsafe URL %j', (url) => {
     const doc = parse(sanitizeHtml(`<a href="${url}">Link</a>`));

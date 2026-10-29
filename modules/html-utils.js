@@ -112,6 +112,9 @@ export function sanitizeHtml(html) {
     const attributes = Object.fromEntries(Array.from(el.attributes, attr => [attr.name, attr.value]));
     Array.from(el.attributes).forEach(attr => el.removeAttribute(attr.name));
     if (attributes.title) el.setAttribute('title', attributes.title);
+    if ((tag === 'th' || tag === 'td') && ['left', 'center', 'right'].includes(attributes.align)) {
+      el.setAttribute('align', attributes.align);
+    }
 
     if (tag === 'a' || tag === 'img') {
       const attr = tag === 'a' ? 'href' : 'src';
