@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Manifest: added a Gecko add-on ID and `strict_min_version` 128.0, and a `background.scripts` entry next to `service_worker`, so `web-ext lint` reports no errors. Chrome/Edge keep using the service worker.
+- Background script: `chrome.sidePanel` is feature-detected, so browsers without it (Firefox) skip the call instead of raising a TypeError. The sidebar does not open in Firefox yet.
+- CI runs `npm run lint`.
+
 ## [1.7.0] - 2025-10-25
 
 ### Added

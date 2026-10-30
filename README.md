@@ -66,7 +66,7 @@ npm run build
 | `npm run test:watch` | Run Vitest in watch mode during development. |
 | `npm run build` | web-ext build: packages the extension into `web-ext-artifacts/`, leaving out `tools`, `tests`, `Screenshots` and npm files (`webExt.ignoreFiles` in package.json). Use this instead of zipping the folder by hand. |
 
-`web-ext lint` checks Firefox compatibility as well. The current Chrome/Edge manifest has no Firefox background fallback or Gecko add-on ID, so lint reports errors for those requirements. Firefox support remains a roadmap item; a successful build does not establish Firefox compatibility.
+`web-ext lint` checks Firefox compatibility as well, and CI runs it. The manifest declares a Gecko add-on ID (`browser_specific_settings.gecko`, Firefox 128 or later) and lists the background script under both `service_worker` (used by Chrome/Edge) and `scripts` (used by Firefox), so lint reports no errors; its remaining warnings are not blocking. The sidebar itself uses Chrome's `chrome.sidePanel` API, which Firefox does not provide, so the background script skips it there and the sidebar does not open in Firefox yet. Full Firefox support remains a roadmap item; neither lint nor a successful build establishes it.
 
 To try the extension locally, open `chrome://extensions` (or `edge://extensions`), enable Developer mode, choose **Load unpacked**, and select this repository folder. Open InsideBar AI from the browser toolbar. Sign in to a provider yourself if its website requires it.
 
