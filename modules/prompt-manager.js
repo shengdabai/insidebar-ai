@@ -365,12 +365,22 @@ export async function importPrompts(data, mergeStrategy = 'skip') {
   if (!data || !data.prompts || !Array.isArray(data.prompts)) {
     throw new Error('Invalid import data format');
   }
+  if (!['skip', 'overwrite'].includes(mergeStrategy)) {
+    throw new Error('Invalid import strategy');
+  }
 
   const results = {
     imported: 0,
     skipped: 0,
     errors: []
   };
+
+  if (data.prompts.length === 0) return results;
+
+  // Deduplicate by saved title, not by full-text search matches in other fields.
+  const existingTitles = mergeStrategy === 'skip'
+    ? new Set((await getAllPrompts()).map(prompt => prompt.title.toLowerCase().trim()))
+    : new Set();
 
   for (const promptData of data.prompts) {
     try {
@@ -381,17 +391,17 @@ export async function importPrompts(data, mergeStrategy = 'skip') {
         await savePrompt(promptWithoutId);
         results.imported++;
       } else if (mergeStrategy === 'skip') {
-        // Check if similar prompt exists (same title)
-        const existing = await searchPrompts(promptData.title);
-        if (existing.length === 0) {
+        const titleKey = sanitizeString(promptData.title || 'Untitled Prompt', MAX_TITLE_LENGTH).toLowerCase();
+        if (!existingTitles.has(titleKey)) {
           await savePrompt(promptWithoutId);
+          existingTitles.add(titleKey);
           results.imported++;
         } else {
           results.skipped++;
         }
       }
     } catch (error) {
-      results.errors.push({ prompt: promptData.title, error: error.message });
+      results.errors.push({ prompt: promptData?.title, error: error.message });
     }
   }
 
@@ -448,7 +458,7 @@ export async function importDefaultLibrary(libraryData) {
   for (const promptData of libraryData.prompts) {
     try {
       // Check if already imported by title
-      const titleKey = promptData.title.toLowerCase().trim();
+      const titleKey = sanitizeString(promptData.title || 'Untitled Prompt', MAX_TITLE_LENGTH).toLowerCase();
       if (existingTitles.has(titleKey)) {
         results.skipped++;
         continue;
@@ -462,7 +472,7 @@ export async function importDefaultLibrary(libraryData) {
       existingTitles.add(titleKey);
     } catch (error) {
       results.errors.push({
-        prompt: promptData.title,
+        prompt: promptData?.title,
         error: error.message
       });
     }

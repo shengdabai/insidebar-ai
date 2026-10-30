@@ -1,12 +1,32 @@
 // Tests for HTML utility functions - Critical for XSS protection
 import { describe, it, expect } from 'vitest';
-import { escapeHtml, html, unsafeHtml, renderList } from '../modules/html-utils.js';
+import { escapeHtml, html, unsafeHtml, renderList, renderExternalLink } from '../modules/html-utils.js';
+
+describe('history external links', () => {
+  it.each(['javascript:alert(1)', 'java\nscript:alert(1)', 'data:text/html,unsafe', '', null])(
+    'renders %j as inert text', (url) => {
+      const doc = new DOMParser().parseFromString(renderExternalLink(url, 'Date'), 'text/html');
+      expect(doc.querySelector('a')).toBeNull();
+      expect(doc.body.textContent).toBe('Date');
+    }
+  );
+
+  it('escapes link text and attributes while preserving an ordinary URL', () => {
+    const doc = new DOMParser().parseFromString(renderExternalLink('https://example.invalid/chat',
+      '<unsafe>', 'date', '" onclick="unsafe()'), 'text/html');
+    const link = doc.querySelector('a');
+    expect(link.getAttribute('href')).toBe('https://example.invalid/chat');
+    expect(link.getAttribute('rel')).toBe('noopener noreferrer');
+    expect(link.textContent).toBe('<unsafe>');
+    expect(link.hasAttribute('onclick')).toBe(false);
+  });
+});
 
 describe('html-utils module', () => {
   describe('escapeHtml', () => {
     it('should escape HTML special characters', () => {
       expect(escapeHtml('<script>alert("xss")</script>')).toBe(
-        '&lt;script&gt;alert("xss")&lt;/script&gt;'
+        '&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;'
       );
     });
 
@@ -14,11 +34,9 @@ describe('html-utils module', () => {
       expect(escapeHtml('Tom & Jerry')).toBe('Tom &amp; Jerry');
     });
 
-    it('should NOT escape quotes (DOM textContent approach)', () => {
-      // Note: escapeHtml uses DOM textContent which doesn't escape quotes
-      // This is safe because quotes only matter in attribute contexts
-      expect(escapeHtml('"quoted"')).toBe('"quoted"');
-      expect(escapeHtml("it's")).toBe("it's");
+    it('should escape both quote types for quoted attribute values', () => {
+      expect(escapeHtml('"quoted"')).toBe('&quot;quoted&quot;');
+      expect(escapeHtml("it's")).toBe('it&#39;s');
     });
 
     it('should handle null and undefined', () => {
@@ -32,9 +50,8 @@ describe('html-utils module', () => {
     });
 
     it('should escape HTML tags and ampersands', () => {
-      // Quotes are NOT escaped by DOM textContent (only tags and ampersands)
       expect(escapeHtml('<div class="test" data-value=\'123\'>A & B</div>')).toBe(
-        '&lt;div class="test" data-value=\'123\'&gt;A &amp; B&lt;/div&gt;'
+        '&lt;div class=&quot;test&quot; data-value=&#39;123&#39;&gt;A &amp; B&lt;/div&gt;'
       );
     });
   });
@@ -43,7 +60,7 @@ describe('html-utils module', () => {
     it('should escape interpolated values by default', () => {
       const userInput = '<script>alert("xss")</script>';
       const result = html`<div>${userInput}</div>`;
-      expect(result).toBe('<div>&lt;script&gt;alert("xss")&lt;/script&gt;</div>');
+      expect(result).toBe('<div>&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</div>');
     });
 
     it('should handle multiple interpolations', () => {
@@ -124,15 +141,33 @@ describe('html-utils module', () => {
   });
 
   describe('XSS attack prevention', () => {
-    it('should NOT prevent attribute injection (by design - dont interpolate in attributes)', () => {
-      // IMPORTANT: This test documents a LIMITATION, not a feature!
-      // The escapeHtml function escapes angle brackets but NOT quotes.
-      // This means you MUST NOT interpolate user input into HTML attributes!
-      const malicious = '" onload="alert(1)"';
-      const result = html`<img src="${malicious}">`;
-      // The quotes are NOT escaped, so the malicious payload works
-      expect(result).toBe('<img src="" onload="alert(1)"">');
-      // SECURITY: Never do this in production! Use setAttribute() or data attributes
+    it.each(['"', "'"])('should prevent attribute injection with %s delimiters', (quote) => {
+      const malicious = `${quote} onload=${quote}alert(1)${quote}`;
+      const container = document.createElement('div');
+      container.innerHTML = `<div title=${quote}${escapeHtml(malicious)}${quote}></div>`;
+      const item = container.firstElementChild;
+      expect(item.getAttribute('title')).toBe(malicious);
+      expect(item.hasAttribute('onload')).toBe(false);
+      expect(item.attributes).toHaveLength(1);
+    });
+
+    it('should preserve category values without creating extra attributes', () => {
+      const category = 'Notes " data-selected="true';
+      const container = document.createElement('div');
+      container.innerHTML = html`<div class="category-popup-item" data-value="${category}">${category}</div>`;
+      const item = container.firstElementChild;
+      expect(item.getAttribute('data-value')).toBe(category);
+      expect(item.textContent).toBe(category);
+      expect(item.hasAttribute('data-selected')).toBe(false);
+    });
+
+    it('should preserve search history values containing quotes and entity text', () => {
+      const query = '"exact phrase" &quot; -excluded';
+      const container = document.createElement('datalist');
+      container.innerHTML = `<option value="${escapeHtml(query)}">`;
+      expect(container.children).toHaveLength(1);
+      expect(container.firstElementChild.value).toBe(query);
+      expect(container.firstElementChild.attributes).toHaveLength(1);
     });
 
     it('should escape event handler tags in content', () => {

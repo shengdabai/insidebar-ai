@@ -978,7 +978,7 @@ async function performVersionCheck() {
       const date = new Date(result.latestDate).toLocaleDateString();
       const current = result.currentHash;
       const message = result.latestMessage.split('\n')[0];
-      statusDiv.innerHTML = t('msgUpdateStatusAvailable', [latest, date, current, message]);
+      statusDiv.innerHTML = t('msgUpdateStatusAvailable', [latest, date, current, message], { escapeSubstitutions: true });
       statusDiv.className = 'update-status update-available';
       statusDiv.style.display = 'block';
       showStatus('success', t('msgUpdateAvailable'));

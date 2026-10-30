@@ -3,6 +3,17 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     environment: 'happy-dom',
+    environmentOptions: {
+      happyDOM: {
+        settings: {
+          // Markup tests inspect local HTML; they do not validate remote assets.
+          disableCSSFileLoading: true,
+          disableJavaScriptFileLoading: true,
+          disableIframePageLoading: true,
+          handleDisabledFileLoadingAsSuccess: true,
+        },
+      },
+    },
     globals: true,
     coverage: {
       provider: 'v8',

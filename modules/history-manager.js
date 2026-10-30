@@ -188,7 +188,7 @@ export async function updateConversation(id, updates) {
       const updatedConversation = { ...conversation, ...updates, id, modifiedAt: Date.now() };
 
       // Regenerate search text if content changed
-      if (updates.title || updates.content || updates.tags || updates.notes || updates.provider) {
+      if (['title', 'content', 'tags', 'notes', 'provider'].some(field => Object.hasOwn(updates, field))) {
         updatedConversation.searchText = generateSearchText(updatedConversation);
       }
 
@@ -223,18 +223,9 @@ export async function searchConversations(searchText) {
     const transaction = db.transaction([CONVERSATIONS_STORE], 'readonly');
     const store = transaction.objectStore(CONVERSATIONS_STORE);
 
-    // Optimize by using indexes where possible
-    let cursorSource;
-
-    // If searching by provider, use provider index
-    if (searchOptions.fieldSearches.provider.length > 0) {
-      const providerValue = searchOptions.fieldSearches.provider[0];
-      const index = store.index('provider');
-      cursorSource = index.openCursor(IDBKeyRange.only(providerValue));
-    } else {
-      // Use primary cursor for general search
-      cursorSource = store.openCursor();
-    }
+    // Provider filters support multiple values, substrings and fuzzy matching.
+    // An exact index lookup would discard valid matches before filtering.
+    const cursorSource = store.openCursor();
 
     const results = [];
 
@@ -610,6 +601,9 @@ export async function importConversations(data, mergeStrategy = 'skip') {
   if (!data || !data.conversations || !Array.isArray(data.conversations)) {
     throw new Error('Invalid import data format');
   }
+  if (!['skip', 'overwrite'].includes(mergeStrategy)) {
+    throw new Error('Invalid import strategy');
+  }
 
   const results = {
     imported: 0,
@@ -619,8 +613,8 @@ export async function importConversations(data, mergeStrategy = 'skip') {
 
   for (const conversationData of data.conversations) {
     try {
-      // Remove id to let IndexedDB assign new ones
-      const { id, ...conversationWithoutId } = conversationData;
+      // Imported files cannot target local records through internal save controls.
+      const { id, overwriteId, ...conversationWithoutId } = conversationData;
 
       if (mergeStrategy === 'overwrite') {
         await saveConversation(conversationWithoutId);
@@ -641,7 +635,7 @@ export async function importConversations(data, mergeStrategy = 'skip') {
         }
       }
     } catch (error) {
-      results.errors.push({ conversation: conversationData.title, error: error.message });
+      results.errors.push({ conversation: conversationData?.title, error: error.message });
     }
   }
 

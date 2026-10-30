@@ -8,20 +8,20 @@ All your AIs—ChatGPT, Claude, Gemini, Grok, DeepSeek—in one browser sidebar.
 
 ## Business Context
 
-- **Category:** security and governance tool
-- **Audience:** builders and operators who need safer repositories, cleaner handoffs, and repeatable security checks.
+- **Category:** browser productivity extension
+- **Audience:** people who use AI websites while reading or working in Chrome or Edge.
 - **Repository status:** Public repository. Keep examples, docs, and issues free of credentials, private data, and machine-specific paths.
 - **Topics:** ai, browser-extension, chatgpt, chrome-extension, claude, edge-extension, manifest-v3, productivity, sidebar
 
 ## What This Project Is For
 
 - All your AIs—ChatGPT, Claude, Gemini, Grok, DeepSeek—in one browser sidebar. No API keys, privacy-first, open source.
-- Find repository risks early without exposing secrets in reports.
-- Make security review repeatable across public and private codebases.
+- Save and reuse prompts from a local prompt library.
+- Save conversations locally and search them by text, tags, or provider.
 
 ## Where It Fits
 
-This repository belongs in the trust-and-safety layer of the workbench: it helps make code, configuration, and public handoffs safer before they are reused or shown to clients.
+The extension puts AI provider websites beside the current page. It uses the providers' web interfaces, with local prompt and conversation storage rather than API keys.
 
 ## Technical Overview
 
@@ -37,7 +37,6 @@ This repository belongs in the trust-and-safety layer of the workbench: it helps
 - `tests`
 - `tools` (development scripts; not packaged)
 - `CHANGELOG.md`
-- `COPILOT_TODO.md`
 - `LICENSE`
 - `PRIVACY.md`
 - `README.md`
@@ -49,20 +48,35 @@ This repository belongs in the trust-and-safety layer of the workbench: it helps
 
 ## Quick Start
 
-Use the commands that match the current project state:
+Use the checked-in lockfile to install the development tools:
 
 ```bash
-npm install
+npm ci
 npm run lint
-npm run test
+npm test -- --run
+npm run build
 ```
 
 | Command | Purpose |
 |---|---|
-| `npm install` | Install project dependencies. |
+| `npm ci` | Install the dependency versions in `package-lock.json`. |
 | `npm run lint` | web-ext lint --source-dir . |
-| `npm run test` | vitest |
+| `npm test -- --run` | Run all Vitest tests once and exit. |
+| `npm run test:watch` | Run Vitest in watch mode during development. |
 | `npm run build` | web-ext build: packages the extension into `web-ext-artifacts/`, leaving out `tools`, `tests`, `Screenshots` and npm files (`webExt.ignoreFiles` in package.json). Use this instead of zipping the folder by hand. |
+
+`web-ext lint` checks Firefox compatibility as well. The current Chrome/Edge manifest has no Firefox background fallback or Gecko add-on ID, so lint reports errors for those requirements. Firefox support remains a roadmap item; a successful build does not establish Firefox compatibility.
+
+To try the extension locally, open `chrome://extensions` (or `edge://extensions`), enable Developer mode, choose **Load unpacked**, and select this repository folder. Open InsideBar AI from the browser toolbar. Sign in to a provider yourself if its website requires it.
+
+Before release, manually check opening the sidebar, switching providers, inserting a saved prompt, saving a conversation, and searching saved history. The unit suite uses browser API mocks; it does not prove that current provider websites can load or accept input in the extension.
+
+## Local Data Behavior
+
+- Settings imports use `skip`: prompt titles are compared without case or surrounding whitespace. Conversations use the existing same-title, timestamp-within-one-minute duplicate rule.
+- Imported record IDs and the internal conversation `overwriteId` control cannot select a local record to replace. The programmatic `overwrite` import strategy currently appends records; it does not replace matching records or clear a library.
+- Provider search accepts multiple provider values, partial names, case differences and spelling tolerance. Search scans saved conversations before applying these filters.
+- Saved conversation Markdown keeps ordinary formatting, tables, code and disabled task checkboxes. Active embeds, forms, scripts, styles and unsafe URL protocols are removed when displayed. Original-conversation links accept HTTP(S) only. External Markdown images can still load remote resources when displayed.
 
 ## Operating Notes
 
