@@ -616,23 +616,24 @@ export async function importConversations(data, mergeStrategy = 'skip') {
       // Imported files cannot target local records through internal save controls.
       const { id, overwriteId, ...conversationWithoutId } = conversationData;
 
-      if (mergeStrategy === 'overwrite') {
+      // A match is a local conversation with the same title and a timestamp
+      // within 1 minute. On a match, 'skip' keeps the local conversation and
+      // 'overwrite' replaces it in place (same id); unmatched rows are added
+      // and local conversations that are not in the file are left alone.
+      const existing = await getAllConversations();
+      const match = existing.find(c =>
+        c.title === conversationData.title &&
+        Math.abs(c.timestamp - conversationData.timestamp) < 60000
+      );
+
+      if (!match) {
         await saveConversation(conversationWithoutId);
         results.imported++;
-      } else if (mergeStrategy === 'skip') {
-        // Check if similar conversation exists (same title and timestamp within 1 minute)
-        const existing = await getAllConversations();
-        const isDuplicate = existing.some(c =>
-          c.title === conversationData.title &&
-          Math.abs(c.timestamp - conversationData.timestamp) < 60000
-        );
-
-        if (!isDuplicate) {
-          await saveConversation(conversationWithoutId);
-          results.imported++;
-        } else {
-          results.skipped++;
-        }
+      } else if (mergeStrategy === 'overwrite') {
+        await saveConversation({ ...conversationWithoutId, overwriteId: match.id });
+        results.imported++;
+      } else {
+        results.skipped++;
       }
     } catch (error) {
       results.errors.push({ conversation: conversationData?.title, error: error.message });

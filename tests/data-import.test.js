@@ -106,6 +106,77 @@ describe('data imports', () => {
     expect(conversations[1]).not.toHaveProperty('overwriteId');
   });
 
+  // Issue #16: 'overwrite' must replace the matching local record, not append.
+  describe('skip vs overwrite on a matching record', () => {
+    const file = { prompts: [
+      { id: 99, title: '  MY PLAN  ', content: 'From file', tags: ['imported'] },
+      { title: 'Fresh', content: 'Brand new' },
+    ] };
+
+    beforeEach(async () => {
+      await manager.savePrompt({ title: 'My Plan', content: 'Existing', tags: ['local'] });
+      await manager.savePrompt({ title: 'Untouched', content: 'Not in the file' });
+    });
+
+    it('skip keeps the local prompt and adds only unmatched rows', async () => {
+      const result = await manager.importPrompts(file, 'skip');
+      expect(result).toEqual({ imported: 1, skipped: 1, errors: [] });
+      expect(prompts.map(p => [p.id, p.title, p.content])).toEqual([
+        [1, 'My Plan', 'Existing'],
+        [2, 'Untouched', 'Not in the file'],
+        [3, 'Fresh', 'Brand new'],
+      ]);
+    });
+
+    it('overwrite replaces the local prompt in place and adds only unmatched rows', async () => {
+      const result = await manager.importPrompts(file, 'overwrite');
+      expect(result).toEqual({ imported: 2, skipped: 0, errors: [] });
+      expect(prompts.map(p => [p.id, p.title, p.content])).toEqual([
+        [1, 'MY PLAN', 'From file'],
+        [2, 'Untouched', 'Not in the file'],
+        [3, 'Fresh', 'Brand new'],
+      ]);
+      expect(prompts[0].tags).toEqual(['imported']);
+      expect(prompts.some(p => p.id === 99)).toBe(false);
+    });
+
+    it('overwrite lets the last duplicate in one file win without appending', async () => {
+      const result = await manager.importPrompts({ prompts: [
+        { title: 'Fresh', content: 'First' },
+        { title: ' fresh ', content: 'Second' },
+      ] }, 'overwrite');
+      expect(result).toEqual({ imported: 2, skipped: 0, errors: [] });
+      expect(prompts.filter(p => p.title.toLowerCase().trim() === 'fresh')).toHaveLength(1);
+      expect(prompts[2].content).toBe('Second');
+    });
+
+    it('overwrite rejects an invalid row without touching the local prompt', async () => {
+      const result = await manager.importPrompts({ prompts: [{ title: 'My Plan', content: '' }] }, 'overwrite');
+      expect(result.imported).toBe(0);
+      expect(result.errors).toHaveLength(1);
+      expect(prompts[0].content).toBe('Existing');
+    });
+
+    it.each([
+      ['skip', { imported: 1, skipped: 1, errors: [] }, 'Original'],
+      ['overwrite', { imported: 2, skipped: 0, errors: [] }, 'Updated'],
+    ])('conversations under %s', async (strategy, expected, content) => {
+      const local = await historyManager.saveConversation({ title: 'Chat', content: 'Original', timestamp: 1700000000000 });
+      await historyManager.saveConversation({ title: 'Other', content: 'Not in the file', timestamp: 1700000000000 });
+      const result = await historyManager.importConversations({ conversations: [
+        { id: 99, title: 'Chat', content: 'Updated', timestamp: local.timestamp + 1000 },
+        { title: 'New chat', content: 'Brand new', timestamp: 1700000500000 },
+      ] }, strategy);
+      expect(result).toEqual(expected);
+      expect(conversations.map(c => [c.id, c.title, c.content])).toEqual([
+        [1, 'Chat', content],
+        [2, 'Other', 'Not in the file'],
+        [3, 'New chat', 'Brand new'],
+      ]);
+      if (strategy === 'overwrite') expect(conversations[0].searchText).toContain('updated');
+    });
+  });
+
   it('deduplicates a maximum-length default-library title with surrounding whitespace', async () => {
     const title = 'A'.repeat(200);
     await manager.savePrompt({ title, content: 'Existing' });
