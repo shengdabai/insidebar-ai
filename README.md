@@ -5,6 +5,7 @@ All your AIs—ChatGPT, Claude, Gemini, Grok, DeepSeek—in one browser sidebar.
 ![Version](https://img.shields.io/badge/version-1.7.2-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Languages](https://img.shields.io/badge/languages-10-brightgreen.svg)
+![Test](https://github.com/shengdabai/insidebar-ai/actions/workflows/test.yml/badge.svg)
 
 ## Business Context
 
