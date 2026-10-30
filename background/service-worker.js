@@ -22,6 +22,26 @@ async function loadShortcutSetting() {
   }
 }
 
+// chrome.sidePanel is Chrome-only. Firefox has no such namespace (its sidebar
+// API is sidebarAction), so feature-detect instead of dereferencing undefined.
+function getSidePanelApi() {
+  if (typeof chrome === 'undefined' || !chrome || !chrome.sidePanel) {
+    return null;
+  }
+  return chrome.sidePanel;
+}
+
+// Calls sidePanel.open synchronously (no await before it), so Chrome still
+// sees the user gesture. Rejects with a clear error where the API is missing,
+// which the existing callers already catch.
+async function openSidePanel(windowId) {
+  const sidePanel = getSidePanelApi();
+  if (!sidePanel || typeof sidePanel.open !== 'function') {
+    throw new Error('Side panel API is not available in this browser');
+  }
+  await sidePanel.open({ windowId });
+}
+
 // T070: Helper to toggle side panel
 async function toggleSidePanel(windowId, action = null) {
   if (!windowId) {
@@ -33,7 +53,7 @@ async function toggleSidePanel(windowId, action = null) {
   if (!isOpen) {
     // Open the side panel
     try {
-      await chrome.sidePanel.open({ windowId });
+      await openSidePanel(windowId);
       sidePanelState.set(windowId, true);
     } catch (error) {
       // Silently fail - side panel may not be available
@@ -52,8 +72,12 @@ async function toggleSidePanel(windowId, action = null) {
 
 async function configureActionBehavior() {
   // Always handle action clicks ourselves so we can respect the toggle state.
+  const sidePanel = getSidePanelApi();
+  if (!sidePanel || typeof sidePanel.setPanelBehavior !== 'function') {
+    return;
+  }
   try {
-    await chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: false });
+    await sidePanel.setPanelBehavior({ openPanelOnActionClick: false });
   } catch (error) {
     // Silently fail if API not available
   }
@@ -139,7 +163,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
       const providerId = info.menuItemId.replace('provider-', '');
 
       // Open side panel and track state
-      await chrome.sidePanel.open({ windowId: tab.windowId });
+      await openSidePanel(tab.windowId);
       sidePanelState.set(tab.windowId, true);
 
       // Get source URL placement setting
@@ -207,7 +231,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
       }
     } else if (info.menuItemId === 'open-prompt-library') {
       // Open side panel with prompt library and track state
-      await chrome.sidePanel.open({ windowId: tab.windowId });
+      await openSidePanel(tab.windowId);
       sidePanelState.set(tab.windowId, true);
 
       // Get source URL placement setting
@@ -420,7 +444,7 @@ async function handleSaveConversation(conversationData, sender) {
       if (!isOpen && windowId) {
         try {
           // This will work because it's within the user gesture flow
-          await chrome.sidePanel.open({ windowId });
+          await openSidePanel(windowId);
           sidePanelState.set(windowId, true);
 
           // Wait for sidebar to load, then switch to chat history
@@ -459,7 +483,7 @@ chrome.commands.onCommand.addListener(async (command, tab) => {
     if (!isOpen) {
       // Open and switch to Prompt Library
       try {
-        await chrome.sidePanel.open({ windowId });
+        await openSidePanel(windowId);
         sidePanelState.set(windowId, true);
 
         // Wait for sidebar to load, then switch to Prompt Library
@@ -489,7 +513,7 @@ chrome.commands.onCommand.addListener(async (command, tab) => {
     if (!isOpen) {
       // Sidebar not open - open it (it will auto-focus)
       try {
-        await chrome.sidePanel.open({ windowId });
+        await openSidePanel(windowId);
         sidePanelState.set(windowId, true);
       } catch (error) {
         // Silently handle errors
