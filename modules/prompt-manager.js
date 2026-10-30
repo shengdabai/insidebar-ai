@@ -134,17 +134,14 @@ export async function initPromptDB() {
 }
 
 // T030 & T069: Save new prompt with validation
-export async function savePrompt(promptData) {
-  await ensureDb();
-
-  // Validate input
+// Validate and sanitize one prompt into the record shape that is stored.
+function preparePrompt(promptData) {
   const validationErrors = validatePromptData(promptData);
   if (validationErrors.length > 0) {
     throw new Error(validationErrors.join(', '));
   }
 
-  // Sanitize input
-  const prompt = {
+  return {
     title: sanitizeString(promptData.title || 'Untitled Prompt', MAX_TITLE_LENGTH),
     content: sanitizeString(promptData.content, MAX_CONTENT_LENGTH),
     category: sanitizeString(promptData.category || 'General', MAX_CATEGORY_LENGTH),
@@ -157,6 +154,12 @@ export async function savePrompt(promptData) {
     lastUsed: promptData.lastUsed || null,
     useCount: promptData.useCount || 0
   };
+}
+
+export async function savePrompt(promptData) {
+  await ensureDb();
+
+  const prompt = preparePrompt(promptData);
 
   return runWithRetry(() => {
     const transaction = db.transaction([PROMPTS_STORE], 'readwrite');
@@ -377,28 +380,32 @@ export async function importPrompts(data, mergeStrategy = 'skip') {
 
   if (data.prompts.length === 0) return results;
 
-  // Deduplicate by saved title, not by full-text search matches in other fields.
-  const existingTitles = mergeStrategy === 'skip'
-    ? new Set((await getAllPrompts()).map(prompt => prompt.title.toLowerCase().trim()))
-    : new Set();
+  // Match by saved title (trimmed, case-insensitive), not by full-text search
+  // matches in other fields. On a match, 'skip' keeps the local prompt and
+  // 'overwrite' replaces it in place (same id); unmatched rows are added and
+  // local prompts that are not in the file are left alone. When several local
+  // prompts share a title, the oldest one is the match.
+  const existingIdsByTitle = new Map();
+  for (const prompt of await getAllPrompts()) {
+    const titleKey = prompt.title.toLowerCase().trim();
+    if (!existingIdsByTitle.has(titleKey)) existingIdsByTitle.set(titleKey, prompt.id);
+  }
 
   for (const promptData of data.prompts) {
     try {
-      // Remove id to let IndexedDB assign new ones
+      // Imported ids never address local records; matching is by title only.
       const { id, ...promptWithoutId } = promptData;
+      const titleKey = sanitizeString(promptData.title || 'Untitled Prompt', MAX_TITLE_LENGTH).toLowerCase();
 
-      if (mergeStrategy === 'overwrite') {
-        await savePrompt(promptWithoutId);
+      if (!existingIdsByTitle.has(titleKey)) {
+        const saved = await savePrompt(promptWithoutId);
+        existingIdsByTitle.set(titleKey, saved.id);
         results.imported++;
-      } else if (mergeStrategy === 'skip') {
-        const titleKey = sanitizeString(promptData.title || 'Untitled Prompt', MAX_TITLE_LENGTH).toLowerCase();
-        if (!existingTitles.has(titleKey)) {
-          await savePrompt(promptWithoutId);
-          existingTitles.add(titleKey);
-          results.imported++;
-        } else {
-          results.skipped++;
-        }
+      } else if (mergeStrategy === 'overwrite') {
+        await updatePrompt(existingIdsByTitle.get(titleKey), preparePrompt(promptWithoutId));
+        results.imported++;
+      } else {
+        results.skipped++;
       }
     } catch (error) {
       results.errors.push({ prompt: promptData?.title, error: error.message });
