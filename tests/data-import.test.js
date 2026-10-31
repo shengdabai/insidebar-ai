@@ -140,6 +140,28 @@ describe('data imports', () => {
       expect(prompts.some(p => p.id === 99)).toBe(false);
     });
 
+    // Overwrite replaces content fields but keeps local usage metadata,
+    // whether the file omits those fields or carries different values.
+    it.each([
+      ['omits', {}],
+      ['carries other', { isFavorite: false, useCount: 0, lastUsed: null, createdAt: 1 }],
+    ])('overwrite keeps local favorite, usage and createdAt when the file %s metadata', async (_label, fileMetadata) => {
+      const local = await manager.savePrompt({
+        title: 'Starred', content: 'Local', category: 'Mine', tags: ['local'], variables: ['old'],
+        isFavorite: true, useCount: 7, lastUsed: 1700000100000, createdAt: 1700000000000,
+      });
+      const result = await manager.importPrompts({ prompts: [{
+        title: 'starred', content: 'From file', category: 'Imported', tags: ['imported'], variables: ['new'],
+        ...fileMetadata,
+      }] }, 'overwrite');
+      expect(result).toEqual({ imported: 1, skipped: 0, errors: [] });
+      expect(await manager.getPrompt(local.id)).toEqual({
+        id: local.id,
+        title: 'starred', content: 'From file', category: 'Imported', tags: ['imported'], variables: ['new'],
+        isFavorite: true, useCount: 7, lastUsed: 1700000100000, createdAt: 1700000000000,
+      });
+    });
+
     it('overwrite lets the last duplicate in one file win without appending', async () => {
       const result = await manager.importPrompts({ prompts: [
         { title: 'Fresh', content: 'First' },
