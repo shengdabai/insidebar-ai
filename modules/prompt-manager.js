@@ -382,9 +382,10 @@ export async function importPrompts(data, mergeStrategy = 'skip') {
 
   // Match by saved title (trimmed, case-insensitive), not by full-text search
   // matches in other fields. On a match, 'skip' keeps the local prompt and
-  // 'overwrite' replaces it in place (same id); unmatched rows are added and
-  // local prompts that are not in the file are left alone. When several local
-  // prompts share a title, the oldest one is the match.
+  // 'overwrite' replaces its content in place (same id, local favorite and
+  // usage metadata kept); unmatched rows are added and local prompts that are
+  // not in the file are left alone. When several local prompts share a title,
+  // the oldest one is the match.
   const existingIdsByTitle = new Map();
   for (const prompt of await getAllPrompts()) {
     const titleKey = prompt.title.toLowerCase().trim();
@@ -402,7 +403,10 @@ export async function importPrompts(data, mergeStrategy = 'skip') {
         existingIdsByTitle.set(titleKey, saved.id);
         results.imported++;
       } else if (mergeStrategy === 'overwrite') {
-        await updatePrompt(existingIdsByTitle.get(titleKey), preparePrompt(promptWithoutId));
+        // Replace content fields only; local isFavorite, useCount, lastUsed
+        // and createdAt are kept, as conversation overwrites keep isFavorite.
+        const { title, content, category, tags, variables } = preparePrompt(promptWithoutId);
+        await updatePrompt(existingIdsByTitle.get(titleKey), { title, content, category, tags, variables });
         results.imported++;
       } else {
         results.skipped++;
