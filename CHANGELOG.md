@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Manifest: added a Gecko add-on ID and `strict_min_version` 128.0, and a `background.scripts` entry next to `service_worker`, so `web-ext lint` reports no errors. Chrome/Edge keep using the service worker.
 - Background script: `chrome.sidePanel` is feature-detected, so browsers without it (Firefox) skip the call instead of raising a TypeError. The sidebar does not open in Firefox yet.
 - CI runs `npm run lint`.
+- Prompt and conversation imports with the programmatic `overwrite` strategy replace the matching local record in place instead of adding a duplicate (#16, #20). Prompts match by title (ignoring case and surrounding whitespace); conversations match by title and a timestamp within one minute. The local record keeps its ID, and a prompt keeps its favorite flag, use count, last-used time and creation time. Rows without a match are added; local records that are not in the file are left alone. The settings page still imports with `skip`.
 
 ## [1.7.0] - 2025-10-25
 

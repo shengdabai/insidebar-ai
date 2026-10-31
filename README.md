@@ -74,8 +74,10 @@ Before release, manually check opening the sidebar, switching providers, inserti
 
 ## Local Data Behavior
 
-- Settings imports use `skip`: prompt titles are compared without case or surrounding whitespace. Conversations use the existing same-title, timestamp-within-one-minute duplicate rule.
-- Imported record IDs and the internal conversation `overwriteId` control cannot select a local record to replace. The programmatic `overwrite` import strategy currently appends records; it does not replace matching records or clear a library.
+- Imports match records as follows. A prompt matches the local prompt with the same title, compared without case or surrounding whitespace; if several local prompts share that title, the oldest one is the match. A conversation matches a local conversation with the same title and a timestamp within one minute. Imported record IDs and the internal conversation `overwriteId` control are never used to select a local record.
+- Settings imports use `skip`: a matching row is skipped and the local record is kept.
+- The programmatic `overwrite` import strategy (not offered in the settings page) replaces a matching local record in place. Its ID stays the same and its content comes from the file: title, content, category, tags and variables for prompts; title, content, provider, timestamp, tags, notes, conversation ID and URL for conversations. Local metadata is kept: a prompt's favorite flag, use count, last-used time and creation time, and a conversation's favorite flag.
+- Under both strategies, rows without a match are added and local records that are not in the file are left alone; neither strategy clears a library. Within one file, a later row with the same prompt title replaces the earlier one under `overwrite` and is skipped under `skip`.
 - Provider search accepts multiple provider values, partial names, case differences and spelling tolerance. Search scans saved conversations before applying these filters.
 - Saved conversation Markdown keeps ordinary formatting, tables, code and disabled task checkboxes. Active embeds, forms, scripts, styles and unsafe URL protocols are removed when displayed. Original-conversation links accept HTTP(S) only. External Markdown images can still load remote resources when displayed.
 
